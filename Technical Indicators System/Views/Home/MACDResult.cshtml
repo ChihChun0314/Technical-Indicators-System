@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Technical Indicators MACD Result";
+}
+
+<h2>Technical Indicators Result</h2>
+
+<div>
+    <p><strong>Short Moving Average (ma1):</strong> @ViewBag.Ma1</p>
+    <p><strong>Long Moving Average (ma2):</strong> @ViewBag.Ma2</p>
+    <p><strong>Start Date:</strong> @ViewBag.Stdate</p>
+    <p><strong>End Date:</strong> @ViewBag.Eddate</p>
+    <p><strong>Stock Ticker:</strong> @ViewBag.Ticker</p>
+    <p><strong>Data Slicer:</strong> @ViewBag.Slicer</p>
+</div>
+
+<h3>Python Script Output</h3>
+<pre>@ViewBag.PythonOutput</pre>
+
+<h3>Generated Plots</h3>
+<div>
+    <img src="~/output_positions.png" alt="Positions Plot" />
+    <img src="~/output_macd.png" alt="MACD Plot" />
+</div>

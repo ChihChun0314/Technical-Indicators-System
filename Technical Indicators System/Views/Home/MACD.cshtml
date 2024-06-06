@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "MACD";
+}
+
+<div class="text-center">
+    <h5 class="display-4">Python Script Input</h5>
+    <pre>@ViewBag.PythonOutput</pre>
+</div>
+<form asp-action="ProcessMACDInputs" method="post">
+    <div class="mb-3">
+        <label for="ma1" class="form-label">Short Moving Average (ma1)</label>
+        <input type="number" class="form-control" id="ma1" name="ma1" placeholder="Enter short moving average period (e.g., 12)">
+    </div>
+    <div class="mb-3">
+        <label for="ma2" class="form-label">Long Moving Average (ma2)</label>
+        <input type="number" class="form-control" id="ma2" name="ma2" placeholder="Enter long moving average period (e.g., 26)">
+    </div>
+    <div class="mb-3">
+        <label for="stdate" class="form-label">Start Date</label>
+        <input type="date" class="form-control" id="stdate" name="stdate" placeholder="Enter start date (e.g., 2022-01-01)">
+    </div>
+    <div class="mb-3">
+        <label for="eddate" class="form-label">End Date</label>
+        <input type="date" class="form-control" id="eddate" name="eddate" placeholder="Enter end date (e.g., 2022-12-31)">
+    </div>
+    <div class="mb-3">
+        <label for="ticker" class="form-label">Stock Ticker</label>
+        <input type="text" class="form-control" id="ticker" name="ticker" placeholder="Enter stock ticker (e.g., AAPL)">
+    </div>
+    <div class="mb-3">
+        <label for="slicer" class="form-label">Data Slicer</label>
+        <input type="number" class="form-control" id="slicer" name="slicer" placeholder="Enter data slicer (e.g., 30)">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
