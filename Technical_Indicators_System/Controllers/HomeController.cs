@@ -46,7 +46,7 @@ namespace Technical_Indicators_System.Controllers
 
             // 設置 Python 腳本和執行檔路徑
             string pythonScriptPath = Path.Combine(Directory.GetCurrentDirectory(), "PythonScripts", "quant-trading-master", "MACD_Oscillator_backtest.py");
-            string pythonExePath = @"C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\python.exe";
+            string pythonExePath = @"C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\python.exe"; //輸入自己的python.exe
             // 生成輸出圖片的絕對路徑
             string outputDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
 
