@@ -45,28 +45,36 @@ namespace Technical_Indicators_System.Controllers
             ViewBag.Slicer = slicer;
 
             // 設置 Python 腳本和執行檔路徑
-            string pythonScriptPath = @"C:\Users\Jason\Desktop\Technical Indicators System\Technical Indicators System\PythonScripts\quant-trading-master\MACD Oscillator backtest.py";
+            string pythonScriptPath = Path.Combine(Directory.GetCurrentDirectory(), "PythonScripts", "quant-trading-master", "MACD_Oscillator_backtest.py");
             string pythonExePath = @"C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\python.exe";
+            // 生成輸出圖片的絕對路徑
+            string outputDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
 
             // 設置 ProcessStartInfo 以執行 Python 腳本
             ProcessStartInfo start = new ProcessStartInfo();
             start.FileName = pythonExePath;
-            start.Arguments = $"{pythonScriptPath} {ma1} {ma2} {stdate} {eddate} {ticker} {slicer}"; // 將輸入參數傳遞給 Python 腳本
+            start.Arguments = $"{pythonScriptPath} {ma1} {ma2} {stdate} {eddate} {ticker} {slicer} {outputDir}"; // 將輸入參數傳遞給 Python 腳本
             start.UseShellExecute = false;
             start.RedirectStandardOutput = true;
             start.RedirectStandardError = true;
 
             string result = "";
+            string error = "";
             using (Process process = Process.Start(start))
             {
                 using (StreamReader reader = process.StandardOutput)
                 {
                     result = reader.ReadToEnd();
                 }
+                using (StreamReader reader = process.StandardError)
+                {
+                    error = reader.ReadToEnd();
+                }
             }
 
             // 將 Python 腳本的輸出存儲到 TempData 以便在重定向後使用
             TempData["PythonOutput"] = result;
+            TempData["PythonError"] = error;
             TempData["Ma1"] = ma1;
             TempData["Ma2"] = ma2;
             TempData["Stdate"] = stdate;
@@ -81,6 +89,7 @@ namespace Technical_Indicators_System.Controllers
         {
             // 將 TempData 中的數據存儲到 ViewBag
             ViewBag.PythonOutput = TempData["PythonOutput"];
+            ViewBag.PythonError = TempData["PythonError"];
             ViewBag.Ma1 = TempData["Ma1"];
             ViewBag.Ma2 = TempData["Ma2"];
             ViewBag.Stdate = TempData["Stdate"];
@@ -89,8 +98,8 @@ namespace Technical_Indicators_System.Controllers
             ViewBag.Slicer = TempData["Slicer"];
 
             // 獲取圖片路徑
-            string positionsPath = Path.Combine("~/images", "output_positions.png");
-            string macdPath = Path.Combine("~/images", "output_macd.png");
+            string positionsPath = Path.Combine("/images", "output_positions.png");
+            string macdPath = Path.Combine("/images", "output_macd.png");
             ViewBag.PositionsPath = positionsPath;
             ViewBag.MacdPath = macdPath;
 

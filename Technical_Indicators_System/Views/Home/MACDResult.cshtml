@@ -16,8 +16,14 @@
 <h3>Python Script Output</h3>
 <pre>@ViewBag.PythonOutput</pre>
 
+@* <h3>Python Script Error</h3>
+<pre>@ViewBag.PythonError</pre> *@
+
 <h3>Generated Plots</h3>
 <div>
-    <img src="~/output_positions.png" alt="Positions Plot" />
-    <img src="~/output_macd.png" alt="MACD Plot" />
+    <img src="~/images/output_positions.png" alt="Positions Plot" />
+    <img src="~/images/output_macd.png" alt="MACD Plot" />
+
+    @* <img src="@ViewBag.PositionsPath" alt="Positions Plot" />
+    <img src="@ViewBag.MacdPath" alt="MACD Plot" /> *@
 </div>

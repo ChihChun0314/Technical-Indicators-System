@@ -5,6 +5,11 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Technical_Indicators_System</RootNamespace>
+    <AssemblyName>Technical_Indicators_System</AssemblyName>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
 
 </Project>
