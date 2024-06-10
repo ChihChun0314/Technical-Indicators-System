@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Technical Indicators Quantitative_Momentum Result";
+}
+
+<h2>Technical Indicators Result</h2>
+
+<div>
+    <p><strong>Remove Low Momentum Stocks Number:</strong> @ViewData["Arg0"]</p>
+    <p><strong>Your portfolio:</strong> @ViewData["Arg1"]</p>
+    
+</div>
+
+<h3>Python Script Output</h3>
+<pre>@ViewBag.PythonOutput</pre>
+
+<h3>Python Script Error</h3>
+<pre>@ViewBag.PythonError</pre>
+
+

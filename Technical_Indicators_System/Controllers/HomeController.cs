@@ -93,12 +93,42 @@ namespace Technical_Indicators_System.Controllers // 命名空間定義
             return GenerateResultView("Heikin_AshiResult", "output_positions_HeikinAshi.png", "output_HeikinAshi_portfolio.png");
         }
 
+        public IActionResult Quantitative_Momentum() // 處理 Quantitative_Momentum 請求
+        {
+            _logger.LogInformation("Quantitative_Momentum action called."); // 記錄日誌信息
+            return View(); // 返回 Quantitative_Momentum 視圖
+        }
+
+        [HttpPost] // 指定此方法處理 POST 請求
+        public IActionResult ProcessQuantitativeMomentumInputs(int Remove_Low_Momentum_Stocks_Number, int portfolio)
+        {
+            // 記錄輸入參數的信息
+            _logger.LogInformation($"ProcessQuantitativeMomentumInputs called with Remove_Low_Momentum_Stocks_Number: {Remove_Low_Momentum_Stocks_Number}, portfolio: {portfolio}");
+            // 調用 ExecutePythonScript 方法執行 Python 腳本，並將結果重定向到 Quantitative_MomentumResult 方法
+            return ExecutePythonScript("modified_quantitative_momentum_trading_strategies.py", new object[] { Remove_Low_Momentum_Stocks_Number, portfolio }, "Quantitative_MomentumResult");
+        }
+
+        public IActionResult Quantitative_MomentumResult() // 處理 Quantitative_MomentumResult 請求
+        {
+            _logger.LogInformation("Quantitative_MomentumResult action called."); // 記錄日誌信息
+            // 調用 GenerateResultView 方法生成結果視圖
+            return GenerateResultViewMomentum("Quantitative_MomentumResult");
+        }
+
         private IActionResult ExecutePythonScript(string scriptName, object[] args, string resultAction)
         {
             try
             {
                 // 設置 Python 腳本和執行檔路徑
-                string pythonScriptPath = Path.Combine(Directory.GetCurrentDirectory(), "PythonScripts", "quant-trading-master", scriptName);
+                string pythonScriptPath = "";
+                if (scriptName== "modified_quantitative_momentum_trading_strategies.py")
+                {
+                    pythonScriptPath = Path.Combine(Directory.GetCurrentDirectory(), "PythonScripts", "quantitative_momentum", scriptName);
+                }
+                else
+                {
+                    pythonScriptPath = Path.Combine(Directory.GetCurrentDirectory(), "PythonScripts", "quant-trading-master", scriptName);
+                }
                 string pythonExePath = @"C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\python.exe"; // 修改為您的python.exe路徑
                 string outputDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
 
@@ -155,6 +185,17 @@ namespace Technical_Indicators_System.Controllers // 命名空間定義
             ViewBag.PositionsPath = Path.Combine("/images", positionsFileName);
             ViewBag.MacdPath = Path.Combine("/images", macdFileName);
 
+            return View(viewName); // 返回指定的視圖名稱
+        }
+        private IActionResult GenerateResultViewMomentum(string viewName)
+        {
+            ViewBag.PythonOutput = TempData["PythonOutput"]; // 從 TempData 中獲取 Python 輸出並存儲到 ViewBag
+            ViewBag.PythonError = TempData["PythonError"]; // 從 TempData 中獲取 Python 錯誤信息並存儲到 ViewBag
+
+            for (int i = 0; TempData.ContainsKey($"Arg{i}"); i++) // 從 TempData 中獲取輸入參數並存儲到 ViewData
+            {
+                ViewData[$"Arg{i}"] = TempData[$"Arg{i}"];
+            }
             return View(viewName); // 返回指定的視圖名稱
         }
     }
