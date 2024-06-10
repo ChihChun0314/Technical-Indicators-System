@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Technical Indicators Heikin_Ashi Result";
+}
+
+<h2>Technical Indicators Result</h2>
+
+<div>
+    <p><strong>Stock Ticker:</strong> @ViewData["Arg0"]</p>
+    <p><strong>Start Date:</strong> @ViewData["Arg1"]</p>
+    <p><strong>End Date:</strong> @ViewData["Arg2"]</p>
+</div>
+
+<h3>Python Script Output</h3>
+<pre>@ViewBag.PythonOutput</pre>
+
+<h3>Python Script Error</h3>
+<pre>@ViewBag.PythonError</pre>
+
+<h3>Generated Plots</h3>
+<div>
+    <img src="~/images/output_positions_HeikinAshi.png" alt="Positions Plot" />
+    <img src="~/images/output_HeikinAshi_portfolio.png" alt="Heikin_Ashi Plot" />
+
+    @* <img src="@ViewBag.PositionsPath" alt="Positions Plot" />
+    <img src="@ViewBag.Heikin_AshiPath" alt="Heikin_Ashi Plot" /> *@
+</div>

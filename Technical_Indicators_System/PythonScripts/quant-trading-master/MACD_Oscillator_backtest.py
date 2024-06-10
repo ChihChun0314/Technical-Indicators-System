@@ -9,21 +9,22 @@ Created on Tue Feb  6 11:57:46 2018
 
 #need to get fix yahoo finance package first
 
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import yfinance as yf
-import sys
-import os
+import matplotlib.pyplot as plt  # 導入繪圖庫
+import numpy as np  # 導入數據處理庫
+import pandas as pd  # 導入數據分析庫
+import yfinance as yf  # 導入yahoo finance數據包
+import sys  # 導入系統庫
+import os  # 導入操作系統庫
 
 
 # In[2]:
 
 #simple moving average
+# 簡單移動平均線
 def macd(signals, ma1, ma2):
-    signals['ma1'] = signals['Close'].rolling(window=ma1, min_periods=1, center=False).mean()
-    signals['ma2'] = signals['Close'].rolling(window=ma2, min_periods=1, center=False).mean()
-    return signals
+    signals['ma1'] = signals['Close'].rolling(window=ma1, min_periods=1, center=False).mean()  # 計算短期移動平均線
+    signals['ma2'] = signals['Close'].rolling(window=ma2, min_periods=1, center=False).mean()  # 計算長期移動平均線
+    return signals  # 返回包含移動平均線的數據框
 
 
 # In[3]:
@@ -54,7 +55,7 @@ def signal_generation(df, ma1, ma2, method):
     # 計算振盪器
     signals['oscillator'] = signals['ma1'] - signals['ma2']
 
-    return signals
+    return signals # 返回包含信號的數據框
 
 
 # In[4]:
@@ -71,14 +72,14 @@ def plot(new, ticker, output_dir):
     fig = plt.figure()
     ax = fig.add_subplot(111)
 
-    new['Close'].plot(label=ticker)
-    ax.plot(new.loc[new['signals'] == 1].index, new['Close'][new['signals'] == 1], label='LONG', lw=0, marker='^', c='g')
-    ax.plot(new.loc[new['signals'] == -1].index, new['Close'][new['signals'] == -1], label='SHORT', lw=0, marker='v', c='r')
+    new['Close'].plot(label=ticker)  # 繪製收盤價
+    ax.plot(new.loc[new['signals'] == 1].index, new['Close'][new['signals'] == 1], label='LONG', lw=0, marker='^', c='g')  # 繪製做多信號
+    ax.plot(new.loc[new['signals'] == -1].index, new['Close'][new['signals'] == -1], label='SHORT', lw=0, marker='v', c='r')  # 繪製做空信號
 
-    plt.legend(loc='best')
-    plt.grid(True)
-    plt.title('Positions')
-    positions_path = os.path.join(output_dir, "output_positions.png")
+    plt.legend(loc='best')  # 添加圖例
+    plt.grid(True)  # 添加網格
+    plt.title('Positions')  # 添加標題
+    positions_path = os.path.join(output_dir, "output_positions_MACD.png")  # 設定輸出路徑
     plt.savefig(positions_path)  # 保存圖表為圖片
     plt.close(fig)  # 關閉圖表以節省內存
 
@@ -88,26 +89,27 @@ def plot(new, ticker, output_dir):
     fig = plt.figure()
     cx = fig.add_subplot(211)
 
-    new['oscillator'].plot(kind='bar', color='r')
+    new['oscillator'].plot(kind='bar', color='r')  # 繪製振盪器
 
-    plt.legend(loc='best')
-    plt.grid(True)
-    plt.xticks([])
-    plt.xlabel('')
-    plt.title('MACD Oscillator')
+    plt.legend(loc='best')  # 添加圖例
+    plt.grid(True)  # 添加網格
+    plt.xticks([])  # 隱藏x軸標籤
+    plt.xlabel('')  # 清空x軸標籤
+    plt.title('MACD Oscillator')  # 添加標題
 
     bx = fig.add_subplot(212)
 
-    new['ma1'].plot(label='ma1')
-    new['ma2'].plot(label='ma2', linestyle=':')
+    new['ma1'].plot(label='ma1')  # 繪製短期移動平均線
+    new['ma2'].plot(label='ma2', linestyle=':')  # 繪製長期移動平均線
 
-    plt.legend(loc='best')
-    plt.grid(True)
-    macd_path = os.path.join(output_dir, "output_macd.png")
+    plt.legend(loc='best')  # 添加圖例
+    plt.grid(True)  # 添加網格
+    macd_path = os.path.join(output_dir, "output_macd.png")  # 設定輸出路徑
     plt.savefig(macd_path)  # 保存圖表為圖片
     plt.close(fig)  # 關閉圖表以節省內存
 
-    return positions_path, macd_path
+    return positions_path, macd_path  # 返回圖片路徑
+
 
 
 
@@ -115,12 +117,12 @@ def plot(new, ticker, output_dir):
 
 def main():
     # 獲取命令行參數
-    ma1 = int(sys.argv[1])
-    ma2 = int(sys.argv[2])
-    stdate = sys.argv[3]
-    eddate = sys.argv[4]
-    ticker = sys.argv[5]
-    slicer = int(sys.argv[6])
+    ma1 = int(sys.argv[1])  # 短期移動平均線的窗口大小
+    ma2 = int(sys.argv[2])  # 長期移動平均線的窗口大小
+    stdate = sys.argv[3]  # 開始日期
+    eddate = sys.argv[4]  # 結束日期
+    ticker = sys.argv[5]  # 股票代碼
+    slicer = int(sys.argv[6])  # 用於切片數據的參數
     output_dir = sys.argv[7]  # 獲取輸出目錄參數
 
     # 下載數據
@@ -128,7 +130,7 @@ def main():
 
     # 生成交易信號
     new = signal_generation(df, ma1, ma2, macd)
-    new = new[slicer:]
+    new = new[slicer:]  # 切片數據
 
     # 繪圖並獲取圖片路徑
     positions_path, macd_path = plot(new, ticker, output_dir)

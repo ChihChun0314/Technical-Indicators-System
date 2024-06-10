@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """
 Created on Thu Feb 15 20:48:35 2018
 
@@ -404,8 +404,8 @@ def main():
     #in a whipsaw condition, it is suicidal
     stls=3
     ticker='NVDA'
-    stdate='2015-04-01'
-    eddate='2018-02-15'
+    stdate='2021-04-01'
+    eddate='2023-02-15'
 
     #slicer is used for plotting
     #a three year dataset with 750 data points would be too much

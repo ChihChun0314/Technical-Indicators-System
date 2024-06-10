@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Pair";
+}
+
+<div class="text-center">
+    <h5 class="display-4">Python Script Input</h5>
+    <pre>@ViewBag.PythonOutput</pre>
+</div>
+<form asp-action="ProcessPairInputs" method="post">
+    <div class="mb-3">
+        <label for="stdate" class="form-label">Start Date</label>
+        <input type="date" class="form-control" id="stdate" name="stdate" placeholder="Enter start date (e.g., 2022-01-01)">
+    </div>
+    <div class="mb-3">
+        <label for="eddate" class="form-label">End Date</label>
+        <input type="date" class="form-control" id="eddate" name="eddate" placeholder="Enter end date (e.g., 2022-12-31)">
+    </div>
+    <div class="mb-3">
+        <label for="ticker1" class="form-label">Stock Ticker1</label>
+        <input type="text" class="form-control" id="ticker1" name="ticker1" placeholder="Enter stock ticker (e.g., NVDA)">
+    </div>
+    <div class="mb-3">
+        <label for="ticker2" class="form-label">Stock Ticker2</label>
+        <input type="text" class="form-control" id="ticker2" name="ticker2" placeholder="Enter stock ticker (e.g., AMD)">
+    </div>
+    <button type="submit" class="btn btn-primary" onclick="console.log('-------Form submitted---------');">Submit</button>
+</form>

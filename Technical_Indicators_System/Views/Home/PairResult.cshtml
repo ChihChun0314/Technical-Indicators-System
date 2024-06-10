@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Technical Indicators Pair Result";
+}
+
+<h2>Technical Indicators Result</h2>
+
+<div>
+    <p><strong>Start Date:</strong> @ViewData["Arg0"]</p>
+    <p><strong>End Date:</strong> @ViewData["Arg1"]</p>
+    <p><strong>Stock Ticker1:</strong> @ViewData["Arg2"]</p>
+    <p><strong>Stock Ticker2:</strong> @ViewData["Arg3"]</p>
+</div>
+
+<h3>Python Script Output</h3>
+<pre>@ViewBag.PythonOutput</pre>
+
+<h3>Python Script Error</h3>
+<pre>@ViewBag.PythonError</pre>
+
+<h3>Generated Plots</h3>
+<div>
+    <img src="~/images/output_positions_Pair.png" alt="Positions Plot" />
+    <img src="~/images/output_Pair_portfolio.png" alt="Pair Plot" />
+
+    @* <img src="@ViewBag.PositionsPath" alt="Positions Plot" />
+    <img src="@ViewBag.PairPath" alt="Pair Plot" /> *@
+</div>

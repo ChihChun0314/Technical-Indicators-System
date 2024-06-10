@@ -5,12 +5,12 @@
 <h2>Technical Indicators Result</h2>
 
 <div>
-    <p><strong>Short Moving Average (ma1):</strong> @ViewBag.Ma1</p>
-    <p><strong>Long Moving Average (ma2):</strong> @ViewBag.Ma2</p>
-    <p><strong>Start Date:</strong> @ViewBag.Stdate</p>
-    <p><strong>End Date:</strong> @ViewBag.Eddate</p>
-    <p><strong>Stock Ticker:</strong> @ViewBag.Ticker</p>
-    <p><strong>Data Slicer:</strong> @ViewBag.Slicer</p>
+    <p><strong>Short Moving Average (ma1):</strong> @ViewData["Arg0"]</p>
+    <p><strong>Long Moving Average (ma2):</strong> @ViewData["Arg1"]</p>
+    <p><strong>Start Date:</strong> @ViewData["Arg2"]</p>
+    <p><strong>End Date:</strong> @ViewData["Arg3"]</p>
+    <p><strong>Stock Ticker:</strong> @ViewData["Arg4"]</p>
+    <p><strong>Data Slicer:</strong> @ViewData["Arg5"]</p>
 </div>
 
 <h3>Python Script Output</h3>
@@ -21,9 +21,9 @@
 
 <h3>Generated Plots</h3>
 <div>
-    <img src="~/images/output_positions.png" alt="Positions Plot" />
+    <img src="~/images/output_positions_MACD.png" alt="Positions Plot" />
     <img src="~/images/output_macd.png" alt="MACD Plot" />
 
-    @* <img src="@ViewBag.PositionsPath" alt="Positions Plot" />
+    @* <img src="@ViewBag.positionsPathMACD" alt="Positions Plot" />
     <img src="@ViewBag.MacdPath" alt="MACD Plot" /> *@
 </div>
