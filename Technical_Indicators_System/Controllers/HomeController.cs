@@ -1,7 +1,8 @@
 
 
 using Microsoft.AspNetCore.Mvc; // 引入 ASP.NET Core MVC 命名空間
-using System.Diagnostics; // 引入診斷命名空間，用於執行外部進程
+using System.Diagnostics;
+using Microsoft.Extensions.Options; // 引入診斷命名空間，用於執行外部進程
 using Technical_Indicators_System.Models; // 引入模型命名空間
 
 namespace Technical_Indicators_System.Controllers // 命名空間定義
@@ -9,12 +10,13 @@ namespace Technical_Indicators_System.Controllers // 命名空間定義
     public class HomeController : Controller // 控制器類，繼承自 Controller
     {
         private readonly ILogger<HomeController> _logger; // 定義只讀的日誌記錄器
-
-        public HomeController(ILogger<HomeController> logger) // 控制器構造函數，接受日誌記錄器參數
+        private readonly GlobalSettings _globalSettings;
+        
+        public HomeController(ILogger<HomeController> logger, GlobalSettings globalSettings) // 控制器構造函數，接受日誌記錄器參數
         {
             _logger = logger; // 初始化日誌記錄器
+            _globalSettings = globalSettings;
         }
-
         public IActionResult Index() // 處理 Index 請求
         {
             return View(); // 返回 Index 視圖
@@ -129,13 +131,13 @@ namespace Technical_Indicators_System.Controllers // 命名空間定義
                 {
                     pythonScriptPath = Path.Combine(Directory.GetCurrentDirectory(), "PythonScripts", "quant-trading-master", scriptName);
                 }
-                string pythonExePath = @"C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\python.exe"; // 修改為您的python.exe路徑
+                // string pythonExePath = @"C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\python.exe"; // 修改為您的python.exe路徑
                 string outputDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
 
                 // 設置 ProcessStartInfo 以執行 Python 腳本
                 var start = new ProcessStartInfo
                 {
-                    FileName = pythonExePath,
+                    FileName = _globalSettings.PythonExePath,
                     Arguments = $"{pythonScriptPath} {string.Join(" ", args)} {outputDir}",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
