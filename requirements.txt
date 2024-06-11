@@ -1,0 +1,7 @@
+# QuantitativeMomentum
+numpy
+pandas
+yfinance
+scipy
+statistics
+xlsxwriter
