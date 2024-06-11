@@ -1,10 +1,11 @@
+using Microsoft.Extensions.Options;
 using Technical_Indicators_System;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // 添加配置服務
 builder.Services.Configure<GlobalSettings>(builder.Configuration.GetSection("GlobalSettings"));
-
+builder.Services.AddSingleton(resolver => resolver.GetRequiredService<IOptions<GlobalSettings>>().Value);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
