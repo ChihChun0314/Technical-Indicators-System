@@ -1,49 +1,37 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "首頁";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-
-    <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    MACD Oscillator
-                </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <strong>MACD 震盪指標</strong> 是一種簡單且廣受非專業人士喜愛的動量交易策略，通過比較股票的短期和長期移動平均線來產生買賣信號。
-                    <a href="@Url.Action("MACD", "Home")" class="btn btn-primary">MACD Oscillator</a>
+<body class="HomepageBackground">
+    <div class="container">
+        <div class="vh-100 d-flex justify-content-center align-items-center">
+            <div class="BlockBackground px-3 pt-4 pb-4 text-center mh-85" style="overflow: hidden;">
+                <div>
+                    <h1 class="mx-4 px-5 home-brand">技術指標系統</h1>
+                    <h6 class="px-3 pb-2 home-brand BorderBottomLine">Technical Indicators System</h6>
                 </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Pair trading
-                </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <strong>配對交易</strong> 是一種基於協整關係的統計套利策略，當兩隻協整股票的標準化殘差超過閾值時，通過做多便宜股票和做空昂貴股票來獲利。
-                    <a href="@Url.Action("Pair", "Home")" class="btn btn-primary">Pair trading</a>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Heikin-Ashi candlestick
-                </button>
-            </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <strong>Heikin-Ashi</strong> 是一種燭台圖風格，通過平均化價格數據來過濾交易噪音，幫助更容易識別價格動量和反轉點，但其反應較慢，需要設置止損位以防止損失。
-                    <a href="@Url.Action("Heikin_Ashi", "Home")" class="btn btn-primary">Heikin_Ashi</a>
+                <div class="justify-content-center">
+                    <div>
+                        <h3 class="px-3 py-1 home-brand HomepageWord">財務指標工具</h3>
+                        <a class="home-link" href="/Home/MACD">
+                            <!-- 修改成原始呼叫的html -->
+                            <h6 class="px-3 py-1 HomepageWord">MACD Oscillator</h6>
+                        </a>
+                        <a class="home-link" href="/Home/Pair">
+                            <!-- 修改成原始呼叫的html -->
+                            <h6 class="px-3 py-1 HomepageWord">Paired Trading</h6>
+                        </a>
+                        <a class="home-link" href="/Home/Heikin_Ashi">
+                            <!-- 修改成原始呼叫的html -->
+                            <h6 class="px-3 py-1 HomepageWord">Heikin-Ashi Candlestick</h6>
+                        </a>
+                        <a class="home-link" href="/Home/Quantitative_Momentum">
+                            <!-- 修改成原始呼叫的html -->
+                            <h3 class="px-3 py-1 HomepageWord">動量交易策略</h3>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</body>

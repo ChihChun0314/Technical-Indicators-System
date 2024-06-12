@@ -362,3 +362,11 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 .idea
+
+#kendo UI
+kendo.common-material.min.css
+kendo.common-material.min.css.map
+kendo.material-main.min.css
+kendo.material-main.min.css.map
+kendo.all.min.js
+kendo.all.min.js.map

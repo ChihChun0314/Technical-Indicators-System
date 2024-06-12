@@ -1,0 +1,337 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Noto Sans TC", sans-serif !important;
+    background-image: url('../material/background.png');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    z-index: 2; /*更動*/
+}
+
+.container {
+    /*border: solid rgb(214, 50, 187);*/
+    padding: 0 0 !important;
+    /*height: 10000px;*/
+}
+
+.topimg {
+    padding-top: 140px;
+}
+
+.IndicatorBox{
+    text-align: center;
+    color: #18343F;
+    /*border: solid saddlebrown;*/
+    padding: 0 0 15px 0;
+}
+
+.IndicatorPeriod{
+    font-size: 35px;
+    padding: 30px 0 10px 0;
+    font-weight: bold;
+    color: #18343F;
+}
+
+.footertext {
+    width: 100%;
+    height: 100px;
+    /*border: solid saddlebrown;*/
+    text-align: center;
+    background-color: #A1B1CB;
+    color: #FFFFFF;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    /*margin-top: 100px;*/ /*隨footer高度需做調整*/
+}
+
+/* -------------------------------------breadcrumb--------------------------------------- */
+
+.breadcrumbBox {
+    /*border-bottom: solid rgb(217, 217, 217);*/
+    font-weight: bolder;
+    color: #898989;
+}
+
+.breadcrumbText {
+    width: 1070px;
+    padding: 15px 0;
+    margin: auto;
+}
+
+.breadcrumbBox a {
+    color: #898989;
+    text-decoration: none;
+}
+
+.breadcrumbBox span {
+    color: #18343F;
+}
+
+/* -------------------------------------scrollToTopBtn--------------------------------------- */
+
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+    background-color: #6F8297;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #465169;
+}
+
+/* -------------------------------------Homepage--------------------------------------- */
+
+.HomepageBackground {
+    background-image: url('../material/homepageBackground.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.BlockBackground {
+    background-color: rgba(24, 52, 63, 0.8); /*改成莫蘭迪*/
+    border-radius: 10px;
+}
+
+.HomepageWord {
+    color: white
+}
+
+.home-brand, 
+.home-link {
+    color: white;
+    font-weight: bold;
+}
+
+.home-link:hover {
+    font-weight: bold;
+    color: white;
+    border-bottom: white 2px solid;
+}
+
+.BorderBottomLine {
+    border-bottom: 2px solid white;
+}
+
+/* -------------------------------------QuantitativeMomentum--------------------------------------- */
+
+.containerBox{
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+
+.QuantitativeMomentumContnet {
+    width: 900px;
+    /*border: rgb(20, 168, 161) solid;*/
+    margin: auto;
+    padding-bottom: 30px;
+}
+
+.QuantitativeMomentumTitle {
+    font-size: 35px;
+    font-weight: bolder;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-bottom: solid rgb(228, 228, 228);
+    text-align: center;
+    color: #465269;
+}
+
+.QuantitativeMomentumEveryBox {
+    padding: 10px 0;
+    font-weight: bolder;
+    color: #18343F;
+}
+
+.QuantitativeMomentumEveryBox span {
+    color: red;
+}
+
+.QuantitativeMomentumEveryBox input {
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+}
+
+.QuantitativeMomentumEveryBox input[readonly] {
+    background-color: #ddd; /* 灰色背景 */
+}
+
+.SubmitQuantitativeMomentumFormBox {
+    width: 160px;
+    margin: auto;
+}
+
+.SubmitQuantitativeMomentumForm {
+    width: 170px;
+    height: 50px;
+    border-radius: 10px;
+    background: #C5D0E2;
+    font-weight: bolder;
+    color: #465169;
+    border: none;
+    font-weight: bold;
+}
+
+.SubmiQuantitativeMomentumForm:hover {
+    background: #295e67;
+}
+
+/* -------------------------------------QuantitativeMomentumResult--------------------------------------- */
+
+.QuantitativeMomentumContainerBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0; /* 去掉 padding */
+    width: 100%; /* 讓它填滿父容器的寬度 */
+    padding-bottom: 25px;
+}
+
+.QuantitativeMomentumContainerBox form {
+    margin: 0;
+}
+
+.container .QuantitativeMomentumContainerBox .ReadCheckBox .input-group-text {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+.container .QuantitativeMomentumContainerBox .ReadCheckBox .input-group-text input {
+    width: 30px;
+    height: 30px;
+}
+
+.container .QuantitativeMomentumContainerBox .ReadCheckBox .input-group-prepend {
+    margin-right: 10px;
+}
+
+.TradingStrategyBox {
+    /*border: solid rgb(234, 234, 234);*/
+    width: 1000px;
+    /*height: 300px;*/
+    margin-bottom: 0px;
+    padding: 10px;
+}
+
+.TradingStrategyTitle {
+    font-size: 25px;
+    font-weight: bolder;
+    margin: 0 0 20px 0;
+    color: #295060;
+}
+
+.TradingStrategyContent {
+    /*border: solid;*/
+    padding: 0 0 0 20px;
+}
+
+.TradingStrategyContent label {
+    text-align: right;
+    margin: 5px 0;
+    width: auto; /* 設定 label 寬度 */
+    font-weight: bolder;
+}
+
+.TradingStrategyContent input[type="text"],
+.TradingStrategyContent input[type="tel"],
+.TradingStrategyContent input[type="email"],
+.TradingStrategyContent select,
+.TradingStrategyContent input[type="password"] {
+    width: calc(100% - 90px); /* 設定 input 寬度 */
+    margin: 5px 0;
+    height: 35px;
+    padding-left: 10px;
+}
+
+.TradingStrategyContent button {
+    padding: 10px 0;
+    width: 150px;
+    margin: 10px 5px 0 5px;
+    border: none;
+    border-radius: 10px;
+    background-color: #D2EEEE;
+    color: #2C5E7A;
+    font-weight: 900;
+    transition: background-color 0.3s ease;
+    float: right;
+}
+
+.TradingStrategyContent button:hover {
+    background-color: #447e9f; /* 在 hover 時更改背景顏色 */
+    color: #D2EEEE; /* 在 hover 時更改文字顏色 */
+}
+
+.scrollable-table table {
+    width: 100%;
+    /*border-collapse: collapse;*/
+    margin-top: 20px;
+}
+
+.scrollable-table th, .scrollable-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    max-width: 270px; /* 設定表格的最大寬度 */
+}
+
+.scrollable-table th {
+    background-color: #f2f2f2;
+}
+
+.scrollable-table {
+    max-height: 300px; /* 設定最大高度 */
+    overflow-y: auto; /* 啟用垂直滾動條 */
+}
+
+.scrollable-table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f5f5f5; /* 背景色可以根據需要自行調整 */
+}
+
+.RecommendedBuyStockBox {
+    /*border: solid rgb(234, 234, 234);*/
+    width: 1000px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.RecommendedBuyStockTitle {
+    font-size: 25px;
+    font-weight: bolder;
+    color: #295060;
+}
+
+.HQMBuyStockBox {
+    /*border: solid rgb(234, 234, 234);*/
+    width: 1000px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.HQMBuyStockTitle {
+    font-size: 25px;
+    font-weight: bolder;
+    color: #295060;
+}
