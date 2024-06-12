@@ -1,12 +1,12 @@
 ﻿@using System.Data
 @{
-    ViewData["Title"] = "動能交易策略";
+    ViewData["Title"] = "動能交易策略結果";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!--自製麵包屑書籤-->
 <div class="breadcrumbBox">
-    <div class="breadcrumbText"><a href="/Home/Index">首頁</a>&nbsp&nbsp>&nbsp&nbsp<span>動能交易策略</span></div>
+    <div class="breadcrumbText"><a href="/Home/Index">首頁</a>&nbsp&nbsp>&nbsp&nbsp<span>動能交易策略結果</span></div>
 </div>
 <!--自製麵包屑書籤 結束-->
 
@@ -20,12 +20,12 @@
             <div class="TradingStrategyContent">
                 <form>
 
-                    <label for="identity">刪除低動量股票數量｜</label>
-                    <input type="text" required value="@ViewData["Arg0"]" readonly class="Non-input">
+                    <label>刪除低動量股票數量｜</label>
+                    <input type="text" value="@ViewData["Arg0"]" readonly class="Non-input">
                     <br>
 
-                    <label for="password">投資組合數量｜</label>
-                    <input type="text" required value="@ViewData["Arg1"]" readonly class="Non-input">
+                    <label>投資組合數量｜</label>
+                    <input type="text" value="@ViewData["Arg1"]" readonly class="Non-input">
                     <br>
 
                 </form>
@@ -67,10 +67,8 @@
             </div>
         </div>
 
-        <button id="create_HQMBuyStockBox" class="k-button k-primary btn-add-book">推薦購買的HQM股票數量</button>
-
         <!-- 推薦購買的HQM股票數量 -->
-        <div id="window" class="HQMBuyStockBox" style="visibility:hidden">
+        <div class="HQMBuyStockBox">
             <div class="HQMBuyStockTitle">推薦購買的HQM股票數量</div>
             <div class="scrollable-table">
                 @if (ViewBag.TableData2 != null)
@@ -113,5 +111,3 @@
         </div>
     </div>
 </div>
-
-<script src="~/js/QuantitativeMomentumResult.js"></script>

@@ -1,27 +1,53 @@
 ﻿@{
-    ViewData["Title"] = "Pair";
+    ViewData["Title"] = "配對交易指標";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h6 class="display-6">Pair trading Input</h6>
-    <pre>@ViewBag.PythonOutput</pre>
+<!--自製麵包屑書籤-->
+<div class="breadcrumbBox">
+    <div class="breadcrumbText"><a href="/Home/Index">首頁</a>&nbsp&nbsp>&nbsp&nbsp<a href="">財務指標工具</a>&nbsp&nbsp>&nbsp&nbsp<span>配對交易指標</span></div>
 </div>
-<form asp-action="ProcessPairInputs" method="post">
-    <div class="mb-3">
-        <label for="stdate" class="form-label">Start Date</label>
-        <input type="date" class="form-control" id="stdate" name="stdate" placeholder="Enter start date (e.g., 2022-01-01)">
+<!--自製麵包屑書籤 結束-->
+
+<div class="container">
+    <div class="PairTradingContainerBox containerBox shadow">
+        <div class="PairTradingTitle">配對交易指標</div>
+
+        <!-- 指標介紹 -->
+        <div class="IndicatorIntroBox">
+            <div class="IndicatorIntroTitle">指標介紹</div>
+            <div class="IndicatorIntroContent">
+                <strong>配對交易</strong> 是一種基於協整關係的統計套利策略，當兩隻協整股票的標準化殘差超過閾值時，通過做多便宜股票和做空昂貴股票來獲利。
+            </div>
+        </div>
+
+        <!-- 參數設定 -->
+        <div class="ParameterSettingBox">
+            <div class="ParameterSettingTitle">參數設定</div>
+            <div class="ParameterSettingContent">
+                <form asp-action="ProcessPairInputs" method="post">
+
+                    <label>起始日期｜</label>
+                    <input type="date" required name="stdate" placeholder="Enter start date (e.g., 2022-01-01)">
+                    <br>
+
+                    <label>終止日期｜</label>
+                    <input type="date" required name="eddate" placeholder="Enter end date (e.g., 2022-12-31)">
+                    <br>
+
+                    <label>股票代號1｜</label>
+                    <input type="text" required name="ticker1" placeholder="Enter stock ticker (e.g., NVDA)">
+                    <br>
+
+                    <label>股票代號2｜</label>
+                    <input type="text" required name="ticker2" placeholder="Enter stock ticker (e.g., AMD)">
+                    <br>
+
+                    <div class="SubmitParameterSettingFormBox">
+                        <button type="submit" class="SubmitParameterSettingForm" onclick="console.log('-------Form submitted---------');">產出分析圖</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="eddate" class="form-label">End Date</label>
-        <input type="date" class="form-control" id="eddate" name="eddate" placeholder="Enter end date (e.g., 2022-12-31)">
-    </div>
-    <div class="mb-3">
-        <label for="ticker1" class="form-label">Stock Ticker1</label>
-        <input type="text" class="form-control" id="ticker1" name="ticker1" placeholder="Enter stock ticker (e.g., NVDA)">
-    </div>
-    <div class="mb-3">
-        <label for="ticker2" class="form-label">Stock Ticker2</label>
-        <input type="text" class="form-control" id="ticker2" name="ticker2" placeholder="Enter stock ticker (e.g., AMD)">
-    </div>
-    <button type="submit" class="btn btn-primary" onclick="console.log('-------Form submitted---------');">Submit</button>
-</form>
+</div>

@@ -1,35 +1,61 @@
 ﻿@{
-    ViewData["Title"] = "MACD";
+    ViewData["Title"] = "MACD震盪指標";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h6 class="display-6">MACD Oscillator Input</h6>
-    <pre>@ViewBag.PythonOutput</pre>
+<!--自製麵包屑書籤-->
+<div class="breadcrumbBox">
+    <div class="breadcrumbText"><a href="/Home/Index">首頁</a>&nbsp&nbsp>&nbsp&nbsp<a href="">財務指標工具</a>&nbsp&nbsp>&nbsp&nbsp<span>MACD震盪指標</span></div>
 </div>
-<form asp-action="ProcessMACDInputs" method="post">
-    <div class="mb-3">
-        <label for="ma1" class="form-label">Short Moving Average (ma1)</label>
-        <input type="number" class="form-control" id="ma1" name="ma1" placeholder="Enter short moving average period (e.g., 12)">
+<!--自製麵包屑書籤 結束-->
+
+<div class="container">
+    <div class="MACDContainerBox containerBox shadow">
+        <div class="MACDTitle">MACD震盪指標</div>
+
+        <!-- 指標介紹 -->
+        <div class="IndicatorIntroBox">
+            <div class="IndicatorIntroTitle">指標介紹</div>
+            <div class="IndicatorIntroContent">
+                <strong>MACD震盪指標</strong> 是一種簡單且廣受非專業人士喜愛的動量交易策略，通過比較股票的短期和長期移動平均線來產生買賣信號。
+            </div>
+        </div>
+
+        <!-- 參數設定 -->
+        <div class="ParameterSettingBox">
+            <div class="ParameterSettingTitle">參數設定</div>
+            <div class="ParameterSettingContent">
+                <form asp-action="ProcessMACDInputs" method="post">
+
+                    <label>短期移動平均線 (MA1)｜</label>
+                    <input type="number" required name="ma1" placeholder="Enter short moving average period (e.g., 12)">
+                    <br>
+
+                    <label>長期移動平均線 (MA2)｜</label>
+                    <input type="number" required name="ma2" placeholder="Enter long moving average period (e.g., 26)">
+                    <br>
+
+                    <label>起始日期｜</label>
+                    <input type="date" required name="stdate" placeholder="Enter start date (e.g., 2022-01-01)">
+                    <br>
+
+                    <label>終止日期｜</label>
+                    <input type="date" required name="eddate" placeholder="Enter end date (e.g., 2022-12-31)">
+                    <br>
+
+                    <label>股票代號｜</label>
+                    <input type="text" required name="ticker" placeholder="Enter stock ticker (e.g., AAPL)">
+                    <br>
+
+                    <label>時間切割｜</label>
+                    <input type="number" required name="slicer" placeholder="Enter data slicer (e.g., 30)">
+                    <br>
+
+                    <div class="SubmitParameterSettingFormBox">
+                        <button type="submit" class="SubmitParameterSettingForm">產出分析圖</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="ma2" class="form-label">Long Moving Average (ma2)</label>
-        <input type="number" class="form-control" id="ma2" name="ma2" placeholder="Enter long moving average period (e.g., 26)">
-    </div>
-    <div class="mb-3">
-        <label for="stdate" class="form-label">Start Date</label>
-        <input type="date" class="form-control" id="stdate" name="stdate" placeholder="Enter start date (e.g., 2022-01-01)">
-    </div>
-    <div class="mb-3">
-        <label for="eddate" class="form-label">End Date</label>
-        <input type="date" class="form-control" id="eddate" name="eddate" placeholder="Enter end date (e.g., 2022-12-31)">
-    </div>
-    <div class="mb-3">
-        <label for="ticker" class="form-label">Stock Ticker</label>
-        <input type="text" class="form-control" id="ticker" name="ticker" placeholder="Enter stock ticker (e.g., AAPL)">
-    </div>
-    <div class="mb-3">
-        <label for="slicer" class="form-label">Data Slicer</label>
-        <input type="number" class="form-control" id="slicer" name="slicer" placeholder="Enter data slicer (e.g., 30)">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>
