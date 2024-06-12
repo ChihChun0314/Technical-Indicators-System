@@ -1,4 +1,5 @@
-﻿@{
+﻿@using System.Data
+@{
     ViewData["Title"] = "Technical Indicators Quantitative_Momentum Result";
 }
 
@@ -7,13 +8,72 @@
 <div>
     <p><strong>Remove Low Momentum Stocks Number:</strong> @ViewData["Arg0"]</p>
     <p><strong>Your portfolio:</strong> @ViewData["Arg1"]</p>
-    
 </div>
 
 <h3>Python Script Output</h3>
 <pre>@ViewBag.PythonOutput</pre>
 
-<h3>Python Script Error</h3>
-<pre>@ViewBag.PythonError</pre>
+@* <h3>Python Script Error</h3>
+<pre>@ViewBag.PythonError</pre> *@
 
+<h5>Final DataFrame after Calculating Number of Shares to Buy:</h5>
+@if (ViewBag.TableData1 != null)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                @foreach (DataColumn column in ViewBag.TableData1.Columns)
+                {
+                    <th>@column.ColumnName</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow row in ViewBag.TableData1.Rows)
+            {
+                <tr>
+                    @foreach (var item in row.ItemArray)
+                    {
+                        <td>@item</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No data available for Final DataFrame after Calculating Number of Shares to Buy.</p>
+}
 
+<br />
+
+<h5>HQM DataFrame after Calculating Number of Shares to Buy:</h5>
+@if (ViewBag.TableData2 != null)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                @foreach (DataColumn column in ViewBag.TableData2.Columns)
+                {
+                    <th>@column.ColumnName</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow row in ViewBag.TableData2.Rows)
+            {
+                <tr>
+                    @foreach (var item in row.ItemArray)
+                    {
+                        <td>@item</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No data available for HQM DataFrame after Calculating Number of Shares to Buy.</p>
+}

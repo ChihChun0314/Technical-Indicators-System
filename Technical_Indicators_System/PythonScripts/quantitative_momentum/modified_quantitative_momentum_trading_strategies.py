@@ -103,6 +103,16 @@ def export_to_excel(hqm_dataframe):
         writer.sheets['Momentum Strategy'].write(f'{column}1', column_formats[column][0], string_template)
     
     writer.close()
+    
+def export_to_csv_hqm(hqm_dataframe):
+    output_csv_path = os.path.join('PythonScripts/quantitative_momentum/momentum_strategy_output_hqm.csv')
+    hqm_dataframe.to_csv(output_csv_path, index=False)
+    return output_csv_path
+
+def export_to_csv_buy(final_dataframe):
+    output_csv_path = os.path.join('PythonScripts/quantitative_momentum/momentum_SharesToBuy_output_buy.csv')
+    final_dataframe.to_csv(output_csv_path, index=False)
+    return output_csv_path
 
 def main():
     Remove_Low_Momentum_Stocks_Number = int(sys.argv[1])
@@ -118,8 +128,8 @@ def main():
     try:
         stocks = pd.read_csv(file_path)
         stocks.rename(columns={'Symbol': 'Ticker'}, inplace=True)
-        print("Initial Stocks Data:")
-        print(stocks.head())
+        # print("Initial Stocks Data:")
+        # print(stocks.head())
 
         def chunks(lst, n):
             for i in range(0, len(lst), n):
@@ -144,8 +154,8 @@ def main():
         position_size = float(portfolio) / len(final_dataframe.index)
         for i in range(len(final_dataframe['Ticker'])):
             final_dataframe.loc[i, 'Number of Shares to Buy'] = math.floor(position_size / final_dataframe['Price'][i])
-        print("Final DataFrame after Calculating Number of Shares to Buy:")
-        print(final_dataframe)
+        # # print("Final DataFrame after Calculating Number of Shares to Buy:")
+        # # print(final_dataframe)
 
         hqm_columns = [
             'Ticker', 'Price', 'Number of Shares to Buy', 'One-Year Price Return', 'One-Year Return Percentile',
@@ -183,11 +193,17 @@ def main():
         position_size = float(portfolio) / len(hqm_dataframe.index)
         for i in range(len(hqm_dataframe['Ticker'])):
             hqm_dataframe.loc[i, 'Number of Shares to Buy'] = math.floor(position_size / hqm_dataframe['Price'][i])
-        print("HQM DataFrame after Calculating Number of Shares to Buy:")
-        print(hqm_dataframe)
+        # # print("HQM DataFrame after Calculating Number of Shares to Buy:")
+        # # print(hqm_dataframe)
 
         export_to_excel(hqm_dataframe)
         print("Excel file 'high_quality_momentum_strategy.xlsx' has been created successfully.")
+        
+        csv_path_hqm = export_to_csv_hqm(hqm_dataframe)
+        print(f"CSV file created: {csv_path_hqm}")
+        
+        csv_path_buy = export_to_csv_buy(final_dataframe)
+        print(f"CSV file created: {csv_path_buy}")
         
     except Exception as e:
         print(f"An error occurred: {e}")

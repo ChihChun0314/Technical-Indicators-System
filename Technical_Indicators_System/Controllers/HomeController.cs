@@ -3,7 +3,13 @@
 using Microsoft.AspNetCore.Mvc; // 引入 ASP.NET Core MVC 命名空間
 using System.Diagnostics;
 using Microsoft.Extensions.Options; // 引入診斷命名空間，用於執行外部進程
-using Technical_Indicators_System.Models; // 引入模型命名空間
+using Technical_Indicators_System.Models;
+using System.Data; // 引入模型命名空間
+using System.Globalization;
+using CsvHelper;
+using CsvHelper.Configuration;
+using CsvHelper.Configuration.Attributes;
+using CsvHelper.TypeConversion;
 
 namespace Technical_Indicators_System.Controllers // 命名空間定義
 {
@@ -144,12 +150,25 @@ namespace Technical_Indicators_System.Controllers // 命名空間定義
                     RedirectStandardError = true
                 };
 
-                string result, error;
+                string result, error, csvPathBuy = string.Empty, csvPathHqm = string.Empty;
                 using (var process = Process.Start(start)) // 開始進程
                 {
                     using (var reader = process.StandardOutput) // 讀取標準輸出
                     {
                         result = reader.ReadToEnd();
+                        var lines = result.Split('\n');
+                        foreach (var line in lines)
+                        {
+                            var path = line.Replace("CSV file created: ", "").Trim();
+                            if (path.Contains("buy")) // 假設buy文件路徑包含"buy"
+                            {
+                                csvPathBuy = path;
+                            }
+                            else if (path.Contains("hqm")) // 假設hqm文件路徑包含"hqm"
+                            {
+                                csvPathHqm = path;
+                            }
+                        }
                     }
                     using (var reader = process.StandardError) // 讀取標準錯誤
                     {
@@ -159,6 +178,8 @@ namespace Technical_Indicators_System.Controllers // 命名空間定義
 
                 TempData["PythonOutput"] = result; // 將 Python 輸出存儲到 TempData
                 TempData["PythonError"] = error; // 將 Python 錯誤信息存儲到 TempData
+                TempData["CsvPathBuy"] = csvPathBuy; // 將 buy CSV 路徑儲存到 TempData
+                TempData["CsvPathHqm"] = csvPathHqm; // 將 hqm CSV 路徑儲存到 TempData
                 for (int i = 0; i < args.Length; i++)
                 {
                     TempData[$"Arg{i}"] = args[i].ToString(); // 將輸入參數存儲到 TempData
@@ -198,6 +219,42 @@ namespace Technical_Indicators_System.Controllers // 命名空間定義
             {
                 ViewData[$"Arg{i}"] = TempData[$"Arg{i}"];
             }
+
+            // 從 CSV 文件讀取數據並存儲到 ViewBag
+            var csvPathBuy = TempData["CsvPathBuy"] as string;
+            if (!string.IsNullOrEmpty(csvPathBuy) && System.IO.File.Exists(csvPathBuy))
+            {
+                var tableBuy = new DataTable();
+                using (var reader = new StreamReader(csvPathBuy))
+                {
+                    using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                    {
+                        using (var dr = new CsvDataReader(csv))
+                        {
+                            tableBuy.Load(dr);
+                        }
+                    }
+                }
+                ViewBag.TableData1 = tableBuy;
+            }
+            // 從 CSV 文件讀取數據並存儲到 ViewBag
+            var csvPathHqm = TempData["CsvPathHqm"] as string;
+            if (!string.IsNullOrEmpty(csvPathHqm) && System.IO.File.Exists(csvPathHqm))
+            {
+                var tableHqm = new DataTable();
+                using (var reader = new StreamReader(csvPathHqm))
+                {
+                    using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                    {
+                        using (var dr = new CsvDataReader(csv))
+                        {
+                            tableHqm.Load(dr);
+                        }
+                    }
+                }
+                ViewBag.TableData2 = tableHqm;
+            }
+
             return View(viewName); // 返回指定的視圖名稱
         }
     }
