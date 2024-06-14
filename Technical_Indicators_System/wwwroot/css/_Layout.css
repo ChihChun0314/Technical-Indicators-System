@@ -43,7 +43,7 @@ header {
 
 .footertext {
     width: 100%;
-    height: 100px;
+    height: 50px;
     /*border: solid saddlebrown;*/
     text-align: center;
     background-color: #A1B1CB;
@@ -119,12 +119,13 @@ header {
 .home-link {
     color: white;
     font-weight: bold;
+    text-decoration: none; /* 確保沒有預設的底線 */
 }
 
 .home-link:hover {
-    font-weight: bold;
     color: white;
-    border-bottom: white 2px solid;
+    font-weight: bold !important;
+    border-bottom: 2px solid white !important;
 }
 
 .BorderBottomLine {
@@ -193,6 +194,25 @@ header {
 
 .SubmiQuantitativeMomentumForm:hover {
     background: #295e67;
+}
+
+.SubmitQuantitativeMomentumContainerBox {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    width: 100%;
+}
+
+.SubmitQuantitativeMomentumOutputContainerBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    width: 100%;
+    max-width: 1200px;
 }
 
 /* -------------------------------------QuantitativeMomentumResult--------------------------------------- */

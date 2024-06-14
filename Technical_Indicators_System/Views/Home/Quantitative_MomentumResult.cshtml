@@ -31,63 +31,63 @@
                 </form>
             </div>
         </div>
-
-        <!-- 推薦購買的股票數量 -->
-        <div class="RecommendedBuyStockBox">
-            <div class="RecommendedBuyStockTitle">推薦購買的股票數量</div>
+    
+    <!-- 推薦購買的股票數量 -->
+    <div class="RecommendedBuyStockBox">
+        <div class="RecommendedBuyStockTitle">推薦購買的股票數量</div>
             <div class="scrollable-table">
-                @if (ViewBag.TableData1 != null)
-                {
-                    <table border="1">
-                        <thead>
+            @if (ViewBag.TableData1 != null)
+            {
+                    <table class=border = "1">
+                    <thead>
+                        <tr>
+                            <th scope="col">股票代號</th>
+                            <th scope="col">股票當前價格</th>
+                            <th scope="col">一年期可回報價格</th>
+                            <th scope="col">買進股票數量</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (DataRow row in ViewBag.TableData1.Rows)
+                        {
                             <tr>
-                                <th>股票代號</th>
-                                <th>股票當前價格</th>
-                                <th>一年期可回報價格</th>
-                                <th>買進股票數量</th>
+                                @foreach (var item in row.ItemArray)
+                                {
+                                    <td>@item</td>
+                                }
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (DataRow row in ViewBag.TableData1.Rows)
-                            {
-                                <tr>
-                                    @foreach (var item in row.ItemArray)
-                                    {
-                                        <td>@item</td>
-                                    }
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                }
-                else
-                {
-                    <p>No data available for Final DataFrame after Calculating Number of Shares to Buy.</p>
-                }
-            </div>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>No data available for Final DataFrame after Calculating Number of Shares to Buy.</p>
+            }
         </div>
+    </div>
 
         <!-- 推薦購買的HQM股票數量 -->
         <div class="HQMBuyStockBox">
             <div class="HQMBuyStockTitle">推薦購買的HQM股票數量</div>
-            <div class="scrollable-table">
+            <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
                 @if (ViewBag.TableData2 != null)
                 {
-                    <table border="1">
+                    <table class="table table-bordered">
                         <thead>
-                            <tr>
-                                <th>股票代號</th>
-                                <th>股票當前價格</th>
-                                <th>買進股票數量</th>
-                                <th>一年期可回報價格</th>
-                                <th>一年期可回報百分比</th>
-                                <th>六個月可回報價格</th>
-                                <th>六個月可回報百分比</th>
-                                <th>三個月可回報價格</th>
-                                <th>三個月可回報百分比</th>
-                                <th>一個月可回報價格</th>
-                                <th>一個月可回報百分比</th>
-                                <th>HQM品質分數</th>
+                            <tr class = align-middle>
+                                <th scope="col">股票代號</th>
+                                <th scope="col">股票當前價格</th>
+                                <th scope="col">買進股票數量</th>
+                                <th scope="col">一年期可回報價格</th>
+                                <th scope="col">一年期可回報百分比</th>
+                                <th scope="col">六個月可回報價格</th>
+                                <th scope="col">六個月可回報百分比</th>
+                                <th scope="col">三個月可回報價格</th>
+                                <th scope="col">三個月可回報百分比</th>
+                                <th scope="col">一個月可回報價格</th>
+                                <th scope="col">一個月可回報百分比</th>
+                                <th scope="col">HQM品質分數</th>
                             </tr>
                         </thead>
                         <tbody>
