@@ -123,9 +123,8 @@ header {
 }
 
 .home-link:hover {
-    color: white;
+    color: #D2EEEE;
     font-weight: bold !important;
-    border-bottom: 2px solid white !important;
 }
 
 .BorderBottomLine {
