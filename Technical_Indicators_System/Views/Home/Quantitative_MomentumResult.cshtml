@@ -1,79 +1,128 @@
 ﻿@using System.Data
 @{
-    ViewData["Title"] = "Technical Indicators Quantitative_Momentum Result";
+    ViewData["Title"] = "動能交易策略結果";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Technical Indicators Result</h2>
-
-<div>
-    <p><strong>Remove Low Momentum Stocks Number:</strong> @ViewData["Arg0"]</p>
-    <p><strong>Your portfolio:</strong> @ViewData["Arg1"]</p>
+<!--自製麵包屑書籤-->
+<div class="breadcrumbBox">
+    <div class="breadcrumbText"><a href="/Home/Index">首頁</a>&nbsp&nbsp>&nbsp&nbsp<span>動能交易策略結果</span></div>
 </div>
+<!--自製麵包屑書籤 結束-->
 
-<h3>Python Script Output</h3>
-<pre>@ViewBag.PythonOutput</pre>
+<div class="container">
+    <div class="indicatorOrStrategyContainerBox containerBox shadow">
+        <div class="headline">動能交易策略</div>
 
-@* <h3>Python Script Error</h3>
-<pre>@ViewBag.PythonError</pre> *@
-
-<h5>Final DataFrame after Calculating Number of Shares to Buy:</h5>
-@if (ViewBag.TableData1 != null)
-{
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                @foreach (DataColumn column in ViewBag.TableData1.Columns)
+        <!-- 交易策略 -->
+        <div class="parameterSettingBox">
+            <div class="parameterSettingTitle">交易策略</div>
+            <div class="parameterSettingContent">
+                <form>
+                    <div class="parameterSettingEveryBox">
+                        <div>刪除低動量股票數量</div>
+                        <input type="text" value="@ViewData["Arg0"]" readonly class="Non-input">
+                    </div>
+                    <div class="parameterSettingEveryBox">
+                        <div>投資組合數量</div>
+                        <input type="text" value="@ViewData["Arg1"]" readonly class="Non-input">
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+        <!-- 推薦購買的股票數量 -->
+        <div class="buyStockBox">
+            <div class="buyStockTitle">推薦購買的股票數量</div>
+                <div class="scrollable-table">
+                @if (ViewBag.TableData1 != null)
                 {
-                    <th>@column.ColumnName</th>
+                        <table class=border = "1">
+                        <thead>
+                            <tr>
+                                <th scope="col">股票代號</th>
+                                <th scope="col">股票當前價格</th>
+                                <th scope="col">一年期可回報價格</th>
+                                <th scope="col">買進股票數量</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (DataRow row in ViewBag.TableData1.Rows)
+                            {
+                                <tr>
+                                        @for (int i = 0; i < row.ItemArray.Length; i++)
+                                        {
+                                            var item = row.ItemArray[i];
+                                            if (i == 1 || i == 2)
+                                            {
+                                                <td>@String.Format("{0:F3}", Convert.ToDouble(item))</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@item</td>
+                                            }
+                                        }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 }
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (DataRow row in ViewBag.TableData1.Rows)
-            {
-                <tr>
-                    @foreach (var item in row.ItemArray)
-                    {
-                        <td>@item</td>
-                    }
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>No data available for Final DataFrame after Calculating Number of Shares to Buy.</p>
-}
-
-<br />
-
-<h5>HQM DataFrame after Calculating Number of Shares to Buy:</h5>
-@if (ViewBag.TableData2 != null)
-{
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                @foreach (DataColumn column in ViewBag.TableData2.Columns)
+                else
                 {
-                    <th>@column.ColumnName</th>
+                    <p>No data available for Final DataFrame after Calculating Number of Shares to Buy.</p>
                 }
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (DataRow row in ViewBag.TableData2.Rows)
-            {
-                <tr>
-                    @foreach (var item in row.ItemArray)
-                    {
-                        <td>@item</td>
-                    }
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>No data available for HQM DataFrame after Calculating Number of Shares to Buy.</p>
-}
+            </div>
+        </div>
+
+        <!-- 推薦購買的HQM股票數量 -->
+        <div class="buyStockBox">
+            <div class="buyStockTitle">推薦購買的HQM股票數量</div>
+            <div class="scrollable-table" style="max-height: 400px; overflow-y: auto;">
+                @if (ViewBag.TableData2 != null)
+                {
+                    <table class="table table-bordered table-hover" border="1">
+                        <thead class="thead-light">
+                            <tr class=align-middle>
+                                <th scope="col">股票代號</th>
+                                <th scope="col">股票當前價格</th>
+                                <th scope="col">買進股票數量</th>
+                                <th scope="col">一年期可回報價格</th>
+                                <th scope="col">一年期可回報百分比</th>
+                                <th scope="col">六個月可回報價格</th>
+                                <th scope="col">六個月可回報百分比</th>
+                                <th scope="col">三個月可回報價格</th>
+                                <th scope="col">三個月可回報百分比</th>
+                                <th scope="col">一個月可回報價格</th>
+                                <th scope="col">一個月可回報百分比</th>
+                                <th scope="col">HQM品質分數</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (DataRow row in ViewBag.TableData2.Rows)
+                            {
+                                <tr>
+                                    @for (int i = 0; i < row.ItemArray.Length; i++)
+                                    {
+                                        var item = row.ItemArray[i];
+                                        if (i == 1 || i == 3 || i == 4 || i == 5 || i == 7 || i == 9 || i == 11)
+                                        {
+                                            <td>@String.Format("{0:F3}", Convert.ToDouble(item))</td>
+                                        }
+                                        else
+                                        {
+                                            <td>@item</td>
+                                        }
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>No data available for HQM DataFrame after Calculating Number of Shares to Buy.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

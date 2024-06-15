@@ -1,27 +1,64 @@
 ﻿@{
-    ViewData["Title"] = "Technical Indicators Pair Result";
+    ViewData["Title"] = "配對交易指標結果";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Technical Indicators Result</h2>
-
-<div>
-    <p><strong>Start Date:</strong> @ViewData["Arg0"]</p>
-    <p><strong>End Date:</strong> @ViewData["Arg1"]</p>
-    <p><strong>Stock Ticker1:</strong> @ViewData["Arg2"]</p>
-    <p><strong>Stock Ticker2:</strong> @ViewData["Arg3"]</p>
+<!--自製麵包屑書籤-->
+<div class="breadcrumbBox">
+    <div class="breadcrumbText"><a href="/Home/Index">首頁</a>&nbsp&nbsp>&nbsp&nbsp<a href="">財務指標工具</a>&nbsp&nbsp>&nbsp&nbsp<span>配對交易指標結果</span></div>
 </div>
+<!--自製麵包屑書籤 結束-->
 
-<h3>Python Script Output</h3>
+@* <h3>Python Script Output</h3>
 <pre>@ViewBag.PythonOutput</pre>
 
 <h3>Python Script Error</h3>
-<pre>@ViewBag.PythonError</pre>
+<pre>@ViewBag.PythonError</pre> *@
 
-<h3>Generated Plots</h3>
-<div>
-    <img src="~/images/output_positions_Pair.png" alt="Positions Plot" />
-    <img src="~/images/output_Pair_portfolio.png" alt="Pair Plot" />
+<div class="container">
+    <div class="indicatorOrStrategyContainerBox containerBox shadow">
+        <div class="headline">配對交易指標結果</div>
 
-    @* <img src="@ViewBag.PositionsPath" alt="Positions Plot" />
-    <img src="@ViewBag.PairPath" alt="Pair Plot" /> *@
+        <!-- 指標介紹 -->
+        <div class="indicatorIntroBox">
+            <div class="indicatorIntroTitle">指標介紹</div>
+            <div class="indicatorIntroContent">
+                <strong>配對交易</strong> 是一種基於協整關係的統計套利策略，當兩隻協整股票的標準化殘差超過閾值時，通過做多便宜股票和做空昂貴股票來獲利。
+            </div>
+        </div>
+
+        <!-- 參數設定 -->
+        <div class="parameterSettingBox">
+            <div class="parameterSettingTitle">參數設定</div>
+            <div class="parameterSettingContent">
+                <form>
+                    <div class="parameterSettingEveryBox">
+                        <div>起始日期</div>
+                        <input type="text" value="@ViewData["Arg0"]" readonly>
+                    </div>
+                    <div class="parameterSettingEveryBox">
+                        <div>終止日期</div>
+                        <input type="text" value="@ViewData["Arg1"]" readonly>
+                    </div>
+                    <div class="parameterSettingEveryBox">
+                        <div>股票代號1</div>
+                        <input type="text" value="@ViewData["Arg2"]" readonly>
+                    </div>
+                    <div class="parameterSettingEveryBox">
+                        <div>股票代號2</div>
+                        <input type="text" value="@ViewData["Arg3"]" readonly>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 分析圖 -->
+        <div class="analysisChartBox">
+            <div class="analysisChartTitle">分析圖</div>
+            <div class="analysisChartContent">
+                <img src="~/images/output_positions_Pair.png" alt="Positions Plot" />
+                <img src="~/images/output_Pair_portfolio.png" alt="Pair Plot" />
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,29 +1,65 @@
 ﻿@{
-    ViewData["Title"] = "Technical Indicators MACD Result";
+    ViewData["Title"] = "MACD震盪指標結果";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Technical Indicators Result</h2>
-
-<div>
-    <p><strong>Short Moving Average (ma1):</strong> @ViewData["Arg0"]</p>
-    <p><strong>Long Moving Average (ma2):</strong> @ViewData["Arg1"]</p>
-    <p><strong>Start Date:</strong> @ViewData["Arg2"]</p>
-    <p><strong>End Date:</strong> @ViewData["Arg3"]</p>
-    <p><strong>Stock Ticker:</strong> @ViewData["Arg4"]</p>
-    <p><strong>Data Slicer:</strong> @ViewData["Arg5"]</p>
+<!--自製麵包屑書籤-->
+<div class="breadcrumbBox">
+    <div class="breadcrumbText"><a href="/Home/Index">首頁</a>&nbsp&nbsp>&nbsp&nbsp<a href="">財務指標工具</a>&nbsp&nbsp>&nbsp&nbsp<span>MACD震盪指標結果</span></div>
 </div>
+<!--自製麵包屑書籤 結束-->
 
-<h3>Python Script Output</h3>
+@* <h3>Python Script Output</h3>
 <pre>@ViewBag.PythonOutput</pre>
 
 <h3>Python Script Error</h3>
-<pre>@ViewBag.PythonError</pre>
+<pre>@ViewBag.PythonError</pre> *@
 
-<h3>Generated Plots</h3>
-<div>
-    <img src="~/images/output_positions_MACD.png" alt="Positions Plot" />
-    <img src="~/images/output_macd.png" alt="MACD Plot" />
+<div class="container">
+    <div class="indicatorOrStrategyContainerBox containerBox shadow">
+        <div class="headline">MACD震盪指標結果</div>
 
-    @* <img src="@ViewBag.positionsPathMACD" alt="Positions Plot" />
-    <img src="@ViewBag.MacdPath" alt="MACD Plot" /> *@
+        <!-- 參數設定 -->
+        <div class="parameterSettingBox">
+            <div class="parameterSettingTitle">參數設定</div>
+            <div class="parameterSettingContent">
+                <form>
+                    <div class="parameterSettingEveryBox">
+                        <div>短期移動平均線 (MA1)</div>
+                        <input type="text" value="@ViewData["Arg0"]" readonly>
+                    </div>
+                    <div class="parameterSettingEveryBox">
+                        <div>長期移動平均線 (MA2)</div>
+                        <input type="text" value="@ViewData["Arg1"]" readonly>
+                    </div>
+                    <div class="parameterSettingEveryBox">
+                        <div>起始日期</div>
+                        <input type="text" value="@ViewData["Arg2"]" readonly>
+                    </div>
+                    <div class="parameterSettingEveryBox">
+                        <div>終止日期</div>
+                        <input type="text" value="@ViewData["Arg3"]" readonly>
+                    </div>
+                    <div class="parameterSettingEveryBox">
+                        <div>股票代號</div>
+                        <input type="text" value="@ViewData["Arg4"]" readonly>
+                    </div>
+                    <div class="parameterSettingEveryBox">
+                        <div>時間切割</div>
+                        <input type="text" value="@ViewData["Arg5"]" readonly>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 分析圖 -->
+        <div class="analysisChartBox">
+            <div class="analysisChartTitle">分析圖</div>
+            <div class="analysisChartContent">
+                <img src="~/images/output_positions_MACD.png" alt="Positions Plot"/>
+                <img src="~/images/output_macd.png" alt="MACD Plot" />
+            </div>
+        </div>
+    </div>
 </div>
+
