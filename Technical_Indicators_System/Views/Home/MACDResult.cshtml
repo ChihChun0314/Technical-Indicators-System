@@ -24,29 +24,30 @@
             <div class="ParameterSettingTitle">參數設定</div>
             <div class="ParameterSettingContent">
                 <form>
-                    <label>短期移動平均線 (MA1)｜</label>
-                    <input type="text" value="@ViewData["Arg0"]" readonly>
-                    <br>
-
-                    <label>長期移動平均線 (MA2)｜</label>
-                    <input type="text" value="@ViewData["Arg1"]" readonly>
-                    <br>
-
-                    <label>起始日期｜</label>
-                    <input type="text" value="@ViewData["Arg2"]" readonly>
-                    <br>
-
-                    <label>終止日期｜</label>
-                    <input type="text" value="@ViewData["Arg3"]" readonly>
-                    <br>
-
-                    <label>股票代號｜</label>
-                    <input type="text" value="@ViewData["Arg4"]" readonly>
-                    <br>
-
-                    <label>時間切割｜</label>
-                    <input type="text" value="@ViewData["Arg5"]" readonly>
-                    <br>
+                    <div class="ParameterSettingEveryBox">
+                        <div>短期移動平均線 (MA1)</div>
+                        <input type="text" value="@ViewData["Arg0"]" readonly>
+                    </div>
+                    <div class="ParameterSettingEveryBox">
+                        <div>長期移動平均線 (MA2)</div>
+                        <input type="text" value="@ViewData["Arg1"]" readonly>
+                    </div>
+                    <div class="ParameterSettingEveryBox">
+                        <div>起始日期</div>
+                        <input type="text" value="@ViewData["Arg2"]" readonly>
+                    </div>
+                    <div class="ParameterSettingEveryBox">
+                        <div>終止日期</div>
+                        <input type="text" value="@ViewData["Arg3"]" readonly>
+                    </div>
+                    <div class="ParameterSettingEveryBox">
+                        <div>股票代號</div>
+                        <input type="text" value="@ViewData["Arg4"]" readonly>
+                    </div>
+                    <div class="ParameterSettingEveryBox">
+                        <div>時間切割</div>
+                        <input type="text" value="@ViewData["Arg5"]" readonly>
+                    </div>
                 </form>
             </div>
         </div>
@@ -55,7 +56,7 @@
         <div class="AnalysisChartBox">
             <div class="AnalysisChartTitle">分析圖</div>
             <div class="AnalysisChartContent">
-                <img src="~/images/output_positions_MACD.png" alt="Positions Plot" />
+                <img src="~/images/output_positions_MACD.png" alt="Positions Plot"/>
                 <img src="~/images/output_macd.png" alt="MACD Plot" />
             </div>
         </div>

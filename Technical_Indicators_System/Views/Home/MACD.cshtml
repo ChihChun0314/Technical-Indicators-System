@@ -26,31 +26,30 @@
             <div class="ParameterSettingTitle">參數設定</div>
             <div class="ParameterSettingContent">
                 <form asp-action="ProcessMACDInputs" method="post">
-
-                    <label>短期移動平均線 (MA1)｜</label>
-                    <input type="number" required name="ma1" placeholder="Enter short moving average period (e.g., 12)">
-                    <br>
-
-                    <label>長期移動平均線 (MA2)｜</label>
-                    <input type="number" required name="ma2" placeholder="Enter long moving average period (e.g., 26)">
-                    <br>
-
-                    <label>起始日期｜</label>
-                    <input type="date" required name="stdate" placeholder="Enter start date (e.g., 2022-01-01)">
-                    <br>
-
-                    <label>終止日期｜</label>
-                    <input type="date" required name="eddate" placeholder="Enter end date (e.g., 2022-12-31)">
-                    <br>
-
-                    <label>股票代號｜</label>
-                    <input type="text" required name="ticker" placeholder="Enter stock ticker (e.g., AAPL)">
-                    <br>
-
-                    <label>時間切割｜</label>
-                    <input type="number" required name="slicer" placeholder="Enter data slicer (e.g., 30)">
-                    <br>
-
+                    <div class="ParameterSettingEveryBox">
+                        <div>短期移動平均線 (MA1)</div>
+                        <input type="number" required name="ma1" placeholder="Enter short moving average period (e.g. 12)">
+                    </div>
+                    <div class="ParameterSettingEveryBox">
+                        <div>長期移動平均線 (MA2)</div>
+                        <input type="number" required name="ma2" placeholder="Enter long moving average period (e.g. 26)">
+                    </div>
+                    <div class="ParameterSettingEveryBox">
+                        <div>起始日期</div>
+                        <input type="date" required name="stdate" placeholder="Enter start date (e.g. 2022-01-01)">
+                    </div>
+                    <div class="ParameterSettingEveryBox">
+                        <div>終止日期</div>
+                        <input type="date" required name="eddate" placeholder="Enter end date (e.g. 2022-12-31)">
+                    </div>
+                    <div class="ParameterSettingEveryBox">
+                        <div>股票代號</div>
+                        <input type="text" required name="ticker" placeholder="Enter stock ticker (e.g. AAPL)">
+                    </div>
+                    <div class="ParameterSettingEveryBox">
+                        <div>時間切割</div>
+                        <input type="number" required name="slicer" placeholder="Enter data slicer (e.g. 30)">
+                    </div>
                     <div class="SubmitParameterSettingFormBox">
                         <button type="submit" class="SubmitParameterSettingForm">產出分析圖</button>
                     </div>

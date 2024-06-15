@@ -26,19 +26,18 @@
             <div class="ParameterSettingTitle">參數設定</div>
             <div class="ParameterSettingContent">
                 <form asp-action="ProcessHeikin_AshiInputs" method="post" onsubmit="return validateDates()">
-
-                    <label>股票代號｜</label>
-                    <input type="text" required name="ticker" placeholder="Enter stock ticker (e.g., NVDA)">
-                    <br>
-
-                    <label>起始日期｜</label>
-                    <input type="date" required name="stdate" placeholder="Enter start date (e.g., 2022-01-01)">
-                    <br>
-
-                    <label>終止日期｜</label>
-                    <input type="date" required name="eddate" placeholder="Enter end date (e.g., 2022-12-31)">
-                    <br>
-
+                    <div class="ParameterSettingEveryBox">
+                        <div>股票代號</div>
+                        <input type="text" required name="ticker" placeholder="Enter stock ticker (e.g. NVDA)">
+                    </div>
+                    <div class="ParameterSettingEveryBox">
+                        <div>起始日期</div>
+                        <input type="date" required name="stdate" placeholder="Enter start date (e.g. 2022-01-01)">
+                    </div>
+                    <div class="ParameterSettingEveryBox">
+                        <div>終止日期</div>
+                        <input type="date" required name="eddate" placeholder="Enter end date (e.g. 2022-12-31)">
+                    </div>
                     <div class="SubmitParameterSettingFormBox">
                         <button type="submit" class="SubmitParameterSettingForm" onclick="console.log('-------Form submitted---------');">產出分析圖</button>
                     </div>

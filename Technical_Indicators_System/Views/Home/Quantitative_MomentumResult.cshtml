@@ -19,63 +19,70 @@
             <div class="TradingStrategyTitle">交易策略</div>
             <div class="TradingStrategyContent">
                 <form>
-
-                    <label>刪除低動量股票數量｜</label>
-                    <input type="text" value="@ViewData["Arg0"]" readonly class="Non-input">
-                    <br>
-
-                    <label>投資組合數量｜</label>
-                    <input type="text" value="@ViewData["Arg1"]" readonly class="Non-input">
-                    <br>
-
+                    <div class="ParameterSettingEveryBox">
+                        <div>刪除低動量股票數量</div>
+                        <input type="text" value="@ViewData["Arg0"]" readonly class="Non-input">
+                    </div>
+                    <div class="ParameterSettingEveryBox">
+                        <div>投資組合數量</div>
+                        <input type="text" value="@ViewData["Arg1"]" readonly class="Non-input">
+                    </div>
                 </form>
             </div>
         </div>
     
-    <!-- 推薦購買的股票數量 -->
-    <div class="RecommendedBuyStockBox">
-        <div class="RecommendedBuyStockTitle">推薦購買的股票數量</div>
-            <div class="scrollable-table">
-            @if (ViewBag.TableData1 != null)
-            {
-                    <table class=border = "1">
-                    <thead>
-                        <tr>
-                            <th scope="col">股票代號</th>
-                            <th scope="col">股票當前價格</th>
-                            <th scope="col">一年期可回報價格</th>
-                            <th scope="col">買進股票數量</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (DataRow row in ViewBag.TableData1.Rows)
-                        {
+        <!-- 推薦購買的股票數量 -->
+        <div class="RecommendedBuyStockBox">
+            <div class="RecommendedBuyStockTitle">推薦購買的股票數量</div>
+                <div class="scrollable-table">
+                @if (ViewBag.TableData1 != null)
+                {
+                        <table class=border = "1">
+                        <thead>
                             <tr>
-                                @foreach (var item in row.ItemArray)
-                                {
-                                    <td>@item</td>
-                                }
+                                <th scope="col">股票代號</th>
+                                <th scope="col">股票當前價格</th>
+                                <th scope="col">一年期可回報價格</th>
+                                <th scope="col">買進股票數量</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
-            }
-            else
-            {
-                <p>No data available for Final DataFrame after Calculating Number of Shares to Buy.</p>
-            }
+                        </thead>
+                        <tbody>
+                            @foreach (DataRow row in ViewBag.TableData1.Rows)
+                            {
+                                <tr>
+                                        @for (int i = 0; i < row.ItemArray.Length; i++)
+                                        {
+                                            var item = row.ItemArray[i];
+                                            if (i == 1 || i == 2)
+                                            {
+                                                <td>@String.Format("{0:F3}", Convert.ToDouble(item))</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@item</td>
+                                            }
+                                        }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>No data available for Final DataFrame after Calculating Number of Shares to Buy.</p>
+                }
+            </div>
         </div>
-    </div>
 
         <!-- 推薦購買的HQM股票數量 -->
         <div class="HQMBuyStockBox">
             <div class="HQMBuyStockTitle">推薦購買的HQM股票數量</div>
-            <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+            <div class="scrollable-table" style="max-height: 400px; overflow-y: auto;">
                 @if (ViewBag.TableData2 != null)
                 {
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr class = align-middle>
+                    <table class="table table-bordered table-hover" border="1">
+                        <thead class="thead-light">
+                            <tr class=align-middle>
                                 <th scope="col">股票代號</th>
                                 <th scope="col">股票當前價格</th>
                                 <th scope="col">買進股票數量</th>
@@ -94,9 +101,17 @@
                             @foreach (DataRow row in ViewBag.TableData2.Rows)
                             {
                                 <tr>
-                                    @foreach (var item in row.ItemArray)
+                                    @for (int i = 0; i < row.ItemArray.Length; i++)
                                     {
-                                        <td>@item</td>
+                                        var item = row.ItemArray[i];
+                                        if (i == 1 || i == 3 || i == 4 || i == 5 || i == 7 || i == 9 || i == 11)
+                                        {
+                                            <td>@String.Format("{0:F3}", Convert.ToDouble(item))</td>
+                                        }
+                                        else
+                                        {
+                                            <td>@item</td>
+                                        }
                                     }
                                 </tr>
                             }

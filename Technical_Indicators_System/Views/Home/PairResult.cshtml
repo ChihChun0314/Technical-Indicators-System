@@ -32,21 +32,22 @@
             <div class="ParameterSettingTitle">參數設定</div>
             <div class="ParameterSettingContent">
                 <form>
-                    <label>起始日期｜</label>
-                    <input type="text" value="@ViewData["Arg0"]" readonly>
-                    <br>
-
-                    <label>終止日期｜</label>
-                    <input type="text" value="@ViewData["Arg1"]" readonly>
-                    <br>
-
-                    <label>股票代號1｜</label>
-                    <input type="text" value="@ViewData["Arg2"]" readonly>
-                    <br>
-
-                    <label>股票代號2｜</label>
-                    <input type="text" value="@ViewData["Arg3"]" readonly>
-                    <br>
+                    <div class="ParameterSettingEveryBox">
+                        <div>起始日期</div>
+                        <input type="text" value="@ViewData["Arg0"]" readonly>
+                    </div>
+                    <div class="ParameterSettingEveryBox">
+                        <div>終止日期</div>
+                        <input type="text" value="@ViewData["Arg1"]" readonly>
+                    </div>
+                    <div class="ParameterSettingEveryBox">
+                        <div>股票代號1</div>
+                        <input type="text" value="@ViewData["Arg2"]" readonly>
+                    </div>
+                    <div class="ParameterSettingEveryBox">
+                        <div>股票代號2</div>
+                        <input type="text" value="@ViewData["Arg3"]" readonly>
+                    </div>
                 </form>
             </div>
         </div>
