@@ -10,36 +10,36 @@
 <!--自製麵包屑書籤 結束-->
 
 <div class="container">
-    <div class="Heikin-AshiCandlestickContainerBox containerBox shadow">
-        <div class="Heikin-AshiCandlestickTitle">Heikin-Ashi指標</div>
+    <div class="indicatorOrStrategyContainerBox containerBox shadow">
+        <div class="headline">Heikin-Ashi指標</div>
 
         <!-- 指標介紹 -->
-        <div class="IndicatorIntroBox">
-            <div class="IndicatorIntroTitle">指標介紹</div>
-            <div class="IndicatorIntroContent">
+        <div class="indicatorIntroBox">
+            <div class="indicatorIntroTitle">指標介紹</div>
+            <div class="indicatorIntroContent">
                 <strong>Heikin-Ashi</strong> 是一種燭台圖風格，通過平均化價格數據來過濾交易噪音，幫助更容易識別價格動量和反轉點，但其反應較慢，需要設置止損位以防止損失。
             </div>
         </div>
 
         <!-- 參數設定 -->
-        <div class="ParameterSettingBox">
-            <div class="ParameterSettingTitle">參數設定</div>
-            <div class="ParameterSettingContent">
+        <div class="parameterSettingBox">
+            <div class="parameterSettingTitle">參數設定</div>
+            <div class="parameterSettingContent">
                 <form asp-action="ProcessHeikin_AshiInputs" method="post" onsubmit="return validateDates()">
-                    <div class="ParameterSettingEveryBox">
+                    <div class="parameterSettingEveryBox">
                         <div>股票代號</div>
                         <input type="text" required name="ticker" placeholder="Enter stock ticker (e.g. NVDA)">
                     </div>
-                    <div class="ParameterSettingEveryBox">
+                    <div class="parameterSettingEveryBox">
                         <div>起始日期</div>
                         <input type="date" required name="stdate" placeholder="Enter start date (e.g. 2022-01-01)">
                     </div>
-                    <div class="ParameterSettingEveryBox">
+                    <div class="parameterSettingEveryBox">
                         <div>終止日期</div>
                         <input type="date" required name="eddate" placeholder="Enter end date (e.g. 2022-12-31)">
                     </div>
-                    <div class="SubmitParameterSettingFormBox">
-                        <button type="submit" class="SubmitParameterSettingForm" onclick="console.log('-------Form submitted---------');">產出分析圖</button>
+                    <div class="submitParameterSettingFormBox">
+                        <button type="submit" class="submitParameterSettingForm" onclick="console.log('-------Form submitted---------');">產出分析圖</button>
                     </div>
                 </form>
             </div>

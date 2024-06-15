@@ -16,35 +16,35 @@
 <pre>@ViewBag.PythonError</pre> *@
 
 <div class="container">
-    <div class="MACDContainerBox containerBox shadow">
-        <div class="MACDTitle">MACD震盪指標結果</div>
+    <div class="indicatorOrStrategyContainerBox containerBox shadow">
+        <div class="headline">MACD震盪指標結果</div>
 
         <!-- 參數設定 -->
-        <div class="ParameterSettingBox">
-            <div class="ParameterSettingTitle">參數設定</div>
-            <div class="ParameterSettingContent">
+        <div class="parameterSettingBox">
+            <div class="parameterSettingTitle">參數設定</div>
+            <div class="parameterSettingContent">
                 <form>
-                    <div class="ParameterSettingEveryBox">
+                    <div class="parameterSettingEveryBox">
                         <div>短期移動平均線 (MA1)</div>
                         <input type="text" value="@ViewData["Arg0"]" readonly>
                     </div>
-                    <div class="ParameterSettingEveryBox">
+                    <div class="parameterSettingEveryBox">
                         <div>長期移動平均線 (MA2)</div>
                         <input type="text" value="@ViewData["Arg1"]" readonly>
                     </div>
-                    <div class="ParameterSettingEveryBox">
+                    <div class="parameterSettingEveryBox">
                         <div>起始日期</div>
                         <input type="text" value="@ViewData["Arg2"]" readonly>
                     </div>
-                    <div class="ParameterSettingEveryBox">
+                    <div class="parameterSettingEveryBox">
                         <div>終止日期</div>
                         <input type="text" value="@ViewData["Arg3"]" readonly>
                     </div>
-                    <div class="ParameterSettingEveryBox">
+                    <div class="parameterSettingEveryBox">
                         <div>股票代號</div>
                         <input type="text" value="@ViewData["Arg4"]" readonly>
                     </div>
-                    <div class="ParameterSettingEveryBox">
+                    <div class="parameterSettingEveryBox">
                         <div>時間切割</div>
                         <input type="text" value="@ViewData["Arg5"]" readonly>
                     </div>
@@ -53,9 +53,9 @@
         </div>
 
         <!-- 分析圖 -->
-        <div class="AnalysisChartBox">
-            <div class="AnalysisChartTitle">分析圖</div>
-            <div class="AnalysisChartContent">
+        <div class="analysisChartBox">
+            <div class="analysisChartTitle">分析圖</div>
+            <div class="analysisChartContent">
                 <img src="~/images/output_positions_MACD.png" alt="Positions Plot"/>
                 <img src="~/images/output_macd.png" alt="MACD Plot" />
             </div>

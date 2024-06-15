@@ -1,3 +1,4 @@
+/* -------------------------------------CSS used by many views--------------------------------------- */
 *{
     padding: 0;
     margin: 0;
@@ -36,6 +37,21 @@ header {
     align-items: center;
     justify-content: center;
     bottom: 0;
+}
+
+.containerBox {
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+
+.headline {
+    font-size: 35px;
+    font-weight: bolder;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-bottom: solid rgb(228, 228, 228);
+    text-align: center;
+    color: #465269;
 }
 
 /* -------------------------------------breadcrumb--------------------------------------- */
@@ -81,18 +97,18 @@ header {
 
 /* -------------------------------------Homepage--------------------------------------- */
 
-.HomepageBackground {
+.homepageBackground {
     background-image: url('../material/homepageBackground.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
 
-.BlockBackground {
+.blockBackground {
     background-color: rgba(24, 52, 63, 0.8); /*改成莫蘭迪*/
     border-radius: 10px;
 }
 
-.home-brand, 
+.home-brand,
 .home-link {
     color: white;
     font-weight: bold;
@@ -104,59 +120,69 @@ header {
     font-weight: bold !important;
 }
 
-.BorderBottomLine {
+.borderBottomLine {
     border-bottom: 2px solid white;
 }
 
-/* -------------------------------------QuantitativeMomentum--------------------------------------- */
+/* -------------------------------------Indicator Intro--------------------------------------- */
 
-.containerBox{
-    background-color: #fff;
-    margin-bottom: 30px;
+.indicatorIntroBox {
+    width: 1000px;
+    margin-bottom: 0px;
+    padding: 10px;
 }
 
-.QuantitativeMomentumContnet {
+.indicatorIntroTitle {
+    font-size: 25px;
+    font-weight: bolder;
+    margin: 0 0 20px 0;
+    color: #465269;
+}
+
+.indicatorIntroContent {
+    padding: 0 0 0 20px;
+}
+
+/* -------------------------------------Parameter Setting--------------------------------------- */
+
+.parameterSettingBox {
+    width: 1000px;
+    margin-bottom: 0px;
+    padding: 10px;
+}
+
+.parameterSettingTitle {
+    font-size: 25px;
+    font-weight: bolder;
+    color: #465269;
+}
+
+.parameterSettingContnet {
     width: 900px;
     margin: auto;
     padding-bottom: 30px;
 }
 
-.QuantitativeMomentumTitle {
-    font-size: 35px;
-    font-weight: bolder;
-    padding: 20px 0;
-    margin-bottom: 30px;
-    border-bottom: solid rgb(228, 228, 228);
-    text-align: center;
-    color: #465269;
-}
-
-.QuantitativeMomentumEveryBox {
+.parameterSettingEveryBox {
     padding: 10px 0;
     font-weight: bolder;
     color: #18343F;
 }
 
-.QuantitativeMomentumEveryBox span {
-    color: red;
-}
-
-.QuantitativeMomentumEveryBox input {
+.parameterSettingEveryBox input {
     width: 100%;
     height: 40px;
     padding: 0 10px;
 }
 
-.QuantitativeMomentumEveryBox input[readonly] {
-    background-color: #ddd; /* 灰色背景 */
-}
+/* -------------------------------------Submit Parameter Setting Form--------------------------------------- */
 
-.SubmitQuantitativeMomentumFormBox {
+.submitParameterSettingFormBox {
     width: 160px;
     margin: auto;
 }
 
-.SubmitQuantitativeMomentumForm {
+.submitParameterSettingForm {
     width: 170px;
     height: 50px;
     border-radius: 10px;
@@ -167,32 +193,37 @@ header {
     font-weight: bold;
 }
 
-.SubmiQuantitativeMomentumForm:hover {
+.submiParameterSettingForm:hover {
     background: #295e67;
 }
 
-.SubmitQuantitativeMomentumContainerBox {
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    width: 100%;
+/* -------------------------------------Analysis Chart Box--------------------------------------- */
+
+.analysisChartBox {
+    width: 1000px;
+    margin-bottom: 0px;
+    padding: 10px;
 }
 
-.SubmitQuantitativeMomentumOutputContainerBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    width: 100%;
-    max-width: 1200px;
+.analysisChartTitle {
+    font-size: 25px;
+    font-weight: bolder;
+    margin: 0 0 20px 0;
+    color: #465269;
 }
 
-/* -------------------------------------QuantitativeMomentumResult--------------------------------------- */
+.analysisChartContent {
+    padding: 0 0 0 20px;
+    text-align: center;
+}
 
-.QuantitativeMomentumContainerBox {
+.analysisChartContent img {
+    vertical-align: middle;
+}
+
+/* -------------------------------------Quantitative Momentum Result--------------------------------------- */
+
+.indicatorOrStrategyContainerBox {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -202,58 +233,8 @@ header {
     padding-bottom: 25px;
 }
 
-.QuantitativeMomentumContainerBox form {
+.indicatorOrStrategyContainerBox form {
     margin: 0;
-}
-
-.container .QuantitativeMomentumContainerBox .ReadCheckBox .input-group-text {
-    padding: 0;
-    border: none;
-    background-color: transparent;
-}
-
-.container .QuantitativeMomentumContainerBox .ReadCheckBox .input-group-text input {
-    width: 30px;
-    height: 30px;
-}
-
-.container .QuantitativeMomentumContainerBox .ReadCheckBox .input-group-prepend {
-    margin-right: 10px;
-}
-
-.TradingStrategyBox {
-    width: 1000px;
-    margin-bottom: 0px;
-    padding: 10px;
-}
-
-.TradingStrategyTitle {
-    font-size: 25px;
-    font-weight: bolder;
-    margin: 0 0 20px 0;
-    color: #295060;
-}
-
-.TradingStrategyContent {
-    padding: 0 0 0 20px;
-}
-
-.TradingStrategyContent label {
-    text-align: right;
-    margin: 5px 0;
-    width: auto; /* 設定 label 寬度 */
-    font-weight: bolder;
-}
-
-.TradingStrategyContent input[type="text"],
-.TradingStrategyContent input[type="tel"],
-.TradingStrategyContent input[type="email"],
-.TradingStrategyContent select,
-.TradingStrategyContent input[type="password"] {
-    width: calc(100% - 90px); /* 設定 input 寬度 */
-    margin: 5px 0;
-    height: 35px;
-    padding-left: 10px;
 }
 
 .scrollable-table table {
@@ -283,280 +264,14 @@ header {
     background-color: #f5f5f5; /* 背景色可以根據需要自行調整 */
 }
 
-.RecommendedBuyStockBox {
+.buyStockBox {
     width: 1000px;
     margin-bottom: 20px;
     padding: 10px;
 }
 
-.RecommendedBuyStockTitle {
+.buyStockTitle {
     font-size: 25px;
     font-weight: bolder;
     color: #295060;
-}
-
-.HQMBuyStockBox {
-    width: 1000px;
-    margin-bottom: 20px;
-    padding: 10px;
-}
-
-.HQMBuyStockTitle {
-    font-size: 25px;
-    font-weight: bolder;
-    color: #295060;
-}
-
-/* -------------------------------------MACD Oscillator--------------------------------------- */
-
-.MACDContainerBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0; /* 去掉 padding */
-    width: 100%; /* 讓它填滿父容器的寬度 */
-    padding-bottom: 25px;
-}
-
-.MACDContainerBox form {
-    margin: 0;
-}
-
-.container .MACDContainerBox .ReadCheckBox .input-group-text {
-    padding: 0;
-    border: none;
-    background-color: transparent;
-}
-
-.container .MACDContainerBox .ReadCheckBox .input-group-text input {
-    width: 30px;
-    height: 30px;
-}
-
-.container .MACDContainerBox .ReadCheckBox .input-group-prepend {
-    margin-right: 10px;
-}
-
-.MACDTitle {
-    font-size: 35px;
-    font-weight: bolder;
-    padding: 20px 0;
-    margin-bottom: 30px;
-    border-bottom: solid rgb(228, 228, 228);
-    text-align: center;
-    color: #465269;
-}
-
-.IndicatorIntroBox {
-    width: 1000px;
-    margin-bottom: 0px;
-    padding: 10px;
-}
-
-.IndicatorIntroTitle {
-    font-size: 25px;
-    font-weight: bolder;
-    margin: 0 0 20px 0;
-    color: #465269;
-}
-
-.IndicatorIntroContent {
-    padding: 0 0 0 20px;
-}
-
-.IndicatorIntroContent label {
-    text-align: right;
-    margin: 5px 0;
-    width: auto; /* 設定 label 寬度 */
-    font-weight: bolder;
-}
-
-.IndicatorIntroContent input[type="text"],
-.IndicatorIntroContent input[type="tel"],
-.IndicatorIntroContent input[type="email"],
-.IndicatorIntroContent select,
-.IndicatorIntroContent input[type="password"] {
-    width: calc(100% - 90px); /* 設定 input 寬度 */
-    margin: 5px 0;
-    height: 35px;
-    padding-left: 10px;
-}
-
-.IndicatorIntroContent button {
-    padding: 10px 0;
-    width: 150px;
-    margin: 10px 5px 0 5px;
-    border: none;
-    border-radius: 10px;
-    background-color: #D2EEEE;
-    color: #2C5E7A;
-    font-weight: 900;
-    transition: background-color 0.3s ease;
-    float: right;
-}
-
-.IndicatorIntroContent button:hover {
-    background-color: #447e9f; /* 在 hover 時更改背景顏色 */
-    color: #D2EEEE; /* 在 hover 時更改文字顏色 */
-}
-
-.ParameterSettingBox {
-    width: 1000px;
-    margin-bottom: 0px;
-    padding: 10px;
-}
-
-.ParameterSettingTitle {
-    font-size: 25px;
-    font-weight: bolder;
-    color: #465269;
-}
-
-.ParameterSettingContnet {
-    width: 900px;
-    margin: auto;
-    padding-bottom: 30px;
-}
-
-.ParameterSettingEveryBox {
-    padding: 10px 0;
-    font-weight: bolder;
-    color: #18343F;
-}
-
-.ParameterSettingEveryBox span {
-    color: red;
-}
-
-.ParameterSettingEveryBox input {
-    width: 100%;
-    height: 40px;
-    padding: 0 10px;
-}
-
-.SubmitParameterSettingFormBox {
-    width: 160px;
-    margin: auto;
-}
-
-.SubmitParameterSettingForm {
-    width: 170px;
-    height: 50px;
-    border-radius: 10px;
-    background: #C5D0E2;
-    font-weight: bolder;
-    color: #465169;
-    border: none;
-    font-weight: bold;
-}
-
-.SubmiParameterSettingForm:hover {
-    background: #295e67;
-}
-
-/* -------------------------------------MACD Oscillator Result--------------------------------------- */
-
-.AnalysisChartBox {
-    width: 1000px;
-    margin-bottom: 0px;
-    padding: 10px;
-}
-
-.AnalysisChartTitle {
-    font-size: 25px;
-    font-weight: bolder;
-    margin: 0 0 20px 0;
-    color: #465269;
-}
-
-.AnalysisChartContent {
-    padding: 0 0 0 20px;
-    text-align: center;
-}
-
-.AnalysisChartContent img {
-    vertical-align: middle;
-}
-
-/* -------------------------------------Pair Trading--------------------------------------- */
-
-.PairTradingContainerBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0; /* 去掉 padding */
-    width: 100%; /* 讓它填滿父容器的寬度 */
-    padding-bottom: 25px;
-}
-
-.PairTradingContainerBox form {
-    margin: 0;
-}
-
-.container .PairTradingContainerBox .ReadCheckBox .input-group-text {
-    padding: 0;
-    border: none;
-    background-color: transparent;
-}
-
-.container .PairTradingContainerBox .ReadCheckBox .input-group-text input {
-    width: 30px;
-    height: 30px;
-}
-
-.container .PairTradingContainerBox .ReadCheckBox .input-group-prepend {
-    margin-right: 10px;
-}
-
-.PairTradingTitle {
-    font-size: 35px;
-    font-weight: bolder;
-    padding: 20px 0;
-    margin-bottom: 30px;
-    border-bottom: solid rgb(228, 228, 228);
-    text-align: center;
-    color: #465269;
-}
-
-/* -------------------------------------Heikin-Ashi candlestick--------------------------------------- */
-
-.Heikin-AshiCandlestickContainerBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0; /* 去掉 padding */
-    width: 100%; /* 讓它填滿父容器的寬度 */
-    padding-bottom: 25px;
-}
-
-.Heikin-AshiCandlestickContainerBox form {
-    margin: 0;
-}
-
-.container .Heikin-AshiCandlestickContainerBox .ReadCheckBox .input-group-text {
-    padding: 0;
-    border: none;
-    background-color: transparent;
-}
-
-.container .Heikin-AshiCandlestickContainerBox .ReadCheckBox .input-group-text input {
-    width: 30px;
-    height: 30px;
-}
-
-.container .Heikin-AshiCandlestickContainerBox .ReadCheckBox .input-group-prepend {
-    margin-right: 10px;
-}
-
-.Heikin-AshiCandlestickTitle {
-    font-size: 35px;
-    font-weight: bolder;
-    padding: 20px 0;
-    margin-bottom: 30px;
-    border-bottom: solid rgb(228, 228, 228);
-    text-align: center;
-    color: #465269;
 }

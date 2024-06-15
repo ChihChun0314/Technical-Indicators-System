@@ -11,19 +11,19 @@
 
 <div class="container">
     <div class="containerBox shadow">
-        <div class="QuantitativeMomentumContnet">
+        <div class="parameterSettingContnet">
             <form asp-action="ProcessQuantitativeMomentumInputs" method="post">
-                <div class="QuantitativeMomentumTitle">動能交易策略</div>
-                <div class="QuantitativeMomentumEveryBox">
+                <div class="headline">動能交易策略</div>
+                <div class="parameterSettingEveryBox">
                     <div>刪除低動量股票數量</div>
                     <input type="text" name="Remove_Low_Momentum_Stocks_Number" placeholder="Enter Remove Low Momentum Stocks Number (e.g. 40)" required>
                 </div>
-                <div class="QuantitativeMomentumEveryBox">
+                <div class="parameterSettingEveryBox">
                     <div>投資組合數量</div>
                     <input type="text" name="portfolio" placeholder="Enter portfolio (e.g. 1000000)" required>
                 </div>
-                <div class="SubmitQuantitativeMomentumFormBox">
-                    <button type="submit" class="SubmitQuantitativeMomentumForm" onclick="console.log('-------Form submitted---------');">送出</button>
+                <div class="submitParameterSettingFormBox">
+                    <button type="submit" class="submitParameterSettingForm" onclick="console.log('-------Form submitted---------');">送出</button>
                 </div>
             </form>
         </div>

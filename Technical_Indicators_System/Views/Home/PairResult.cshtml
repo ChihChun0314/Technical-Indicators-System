@@ -16,35 +16,35 @@
 <pre>@ViewBag.PythonError</pre> *@
 
 <div class="container">
-    <div class="PairTradingContainerBox containerBox shadow">
-        <div class="PairTradingTitle">配對交易指標結果</div>
+    <div class="indicatorOrStrategyContainerBox containerBox shadow">
+        <div class="headline">配對交易指標結果</div>
 
         <!-- 指標介紹 -->
-        <div class="IndicatorIntroBox">
-            <div class="IndicatorIntroTitle">指標介紹</div>
-            <div class="IndicatorIntroContent">
+        <div class="indicatorIntroBox">
+            <div class="indicatorIntroTitle">指標介紹</div>
+            <div class="indicatorIntroContent">
                 <strong>配對交易</strong> 是一種基於協整關係的統計套利策略，當兩隻協整股票的標準化殘差超過閾值時，通過做多便宜股票和做空昂貴股票來獲利。
             </div>
         </div>
 
         <!-- 參數設定 -->
-        <div class="ParameterSettingBox">
-            <div class="ParameterSettingTitle">參數設定</div>
-            <div class="ParameterSettingContent">
+        <div class="parameterSettingBox">
+            <div class="parameterSettingTitle">參數設定</div>
+            <div class="parameterSettingContent">
                 <form>
-                    <div class="ParameterSettingEveryBox">
+                    <div class="parameterSettingEveryBox">
                         <div>起始日期</div>
                         <input type="text" value="@ViewData["Arg0"]" readonly>
                     </div>
-                    <div class="ParameterSettingEveryBox">
+                    <div class="parameterSettingEveryBox">
                         <div>終止日期</div>
                         <input type="text" value="@ViewData["Arg1"]" readonly>
                     </div>
-                    <div class="ParameterSettingEveryBox">
+                    <div class="parameterSettingEveryBox">
                         <div>股票代號1</div>
                         <input type="text" value="@ViewData["Arg2"]" readonly>
                     </div>
-                    <div class="ParameterSettingEveryBox">
+                    <div class="parameterSettingEveryBox">
                         <div>股票代號2</div>
                         <input type="text" value="@ViewData["Arg3"]" readonly>
                     </div>
@@ -53,9 +53,9 @@
         </div>
 
         <!-- 分析圖 -->
-        <div class="AnalysisChartBox">
-            <div class="AnalysisChartTitle">分析圖</div>
-            <div class="AnalysisChartContent">
+        <div class="analysisChartBox">
+            <div class="analysisChartTitle">分析圖</div>
+            <div class="analysisChartContent">
                 <img src="~/images/output_positions_Pair.png" alt="Positions Plot" />
                 <img src="~/images/output_Pair_portfolio.png" alt="Pair Plot" />
             </div>

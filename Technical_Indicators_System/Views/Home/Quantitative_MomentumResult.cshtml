@@ -11,19 +11,19 @@
 <!--自製麵包屑書籤 結束-->
 
 <div class="container">
-    <div class="QuantitativeMomentumContainerBox containerBox shadow">
-        <div class="QuantitativeMomentumTitle">動能交易策略</div>
+    <div class="indicatorOrStrategyContainerBox containerBox shadow">
+        <div class="headline">動能交易策略</div>
 
         <!-- 交易策略 -->
-        <div class="TradingStrategyBox">
-            <div class="TradingStrategyTitle">交易策略</div>
-            <div class="TradingStrategyContent">
+        <div class="parameterSettingBox">
+            <div class="parameterSettingTitle">交易策略</div>
+            <div class="parameterSettingContent">
                 <form>
-                    <div class="ParameterSettingEveryBox">
+                    <div class="parameterSettingEveryBox">
                         <div>刪除低動量股票數量</div>
                         <input type="text" value="@ViewData["Arg0"]" readonly class="Non-input">
                     </div>
-                    <div class="ParameterSettingEveryBox">
+                    <div class="parameterSettingEveryBox">
                         <div>投資組合數量</div>
                         <input type="text" value="@ViewData["Arg1"]" readonly class="Non-input">
                     </div>
@@ -32,8 +32,8 @@
         </div>
     
         <!-- 推薦購買的股票數量 -->
-        <div class="RecommendedBuyStockBox">
-            <div class="RecommendedBuyStockTitle">推薦購買的股票數量</div>
+        <div class="buyStockBox">
+            <div class="buyStockTitle">推薦購買的股票數量</div>
                 <div class="scrollable-table">
                 @if (ViewBag.TableData1 != null)
                 {
@@ -75,8 +75,8 @@
         </div>
 
         <!-- 推薦購買的HQM股票數量 -->
-        <div class="HQMBuyStockBox">
-            <div class="HQMBuyStockTitle">推薦購買的HQM股票數量</div>
+        <div class="buyStockBox">
+            <div class="buyStockTitle">推薦購買的HQM股票數量</div>
             <div class="scrollable-table" style="max-height: 400px; overflow-y: auto;">
                 @if (ViewBag.TableData2 != null)
                 {
