@@ -1,15 +1,9 @@
-
-
 using Microsoft.AspNetCore.Mvc; // 引入 ASP.NET Core MVC 命名空間
 using System.Diagnostics;
-using Microsoft.Extensions.Options; // 引入診斷命名空間，用於執行外部進程
 using Technical_Indicators_System.Models;
 using System.Data; // 引入模型命名空間
 using System.Globalization;
 using CsvHelper;
-using CsvHelper.Configuration;
-using CsvHelper.Configuration.Attributes;
-using CsvHelper.TypeConversion;
 
 namespace Technical_Indicators_System.Controllers // 命名空間定義
 {
