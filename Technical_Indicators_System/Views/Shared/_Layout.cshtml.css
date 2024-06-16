@@ -7,6 +7,10 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.dropdown-content a {
+  cursor: pointer;
+}
+
 a {
   color: #0077cc;
 }
