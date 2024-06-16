@@ -5,3 +5,6 @@ yfinance
 scipy
 statistics
 xlsxwriter
+
+# MACD
+matplotlib
